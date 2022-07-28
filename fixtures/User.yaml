@@ -1,0 +1,14 @@
+App\Entity\User:
+  user{1..150}:
+    email: '<email()>'
+    password: '<email()>'
+    firstName: '<firstName()>'
+    lastName: '<lastName()>'
+    dateOfBirth: '<dateTimeBetween("-7000 days", "now")>'
+    registrationDate: '<dateTimeBetween("-200 days", "now")>'
+    gender: '@gender*'
+    address: '@address*'
+    userPicture: '@UserPicture*'
+    
+    
+

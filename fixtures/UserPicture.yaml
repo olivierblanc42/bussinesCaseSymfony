@@ -1,0 +1,6 @@
+App\Entity\UserPicture:
+  UserPicture{1..150}:
+    name: '<firstName()>'
+
+  
+

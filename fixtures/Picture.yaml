@@ -1,0 +1,5 @@
+App\Entity\Picture:
+  picture{1..100}:
+    name: '<firstName()>'
+    product: '@product*'
+    url: '@RelativePath*'

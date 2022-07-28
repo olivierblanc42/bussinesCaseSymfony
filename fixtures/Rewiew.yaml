@@ -1,0 +1,9 @@
+App\Entity\Review:
+  rewiew{1..500}:
+    note: '<numberBetween(1, 5)>'
+    comment: 'un commentaire sur le produits'
+    created_at: '<dateTimeBetween("-200 days", "now")>'
+    user: '@user*'
+    product: '@product*'
+ 
+

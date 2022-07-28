@@ -1,0 +1,14 @@
+App\Entity\Brand:
+  Brand01:
+    label: 'royal canin'
+  Brand02:
+    label: 'PURINA'
+  Brand03:
+    label: 'Eukanuba'
+  Brand04:
+    label: 'Prestano'
+  Brand05:
+    label: 'Acana'
+  Brand06:
+    label: 'Orijen '
+

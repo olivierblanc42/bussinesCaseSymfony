@@ -1,0 +1,12 @@
+App\Entity\MeansOfPayment:
+  MeansOfPayment01:
+    label: "Paypal"
+
+  MeansOfPayment02:
+    label: "Mastercard"
+
+  MeansOfPayment03:
+    label: "visa"
+
+  
+

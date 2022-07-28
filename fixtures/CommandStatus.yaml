@@ -1,0 +1,14 @@
+App\Entity\CommandStatus:
+  status01:
+    label: 'En cours de validation'
+  status02:
+    label: 'Valider'
+  status03:
+    label: 'En preparation'
+  status04:
+    label: 'Envoyer'
+  status05:
+    label: 'Annuler'
+  status06:
+    label: 'rembourser'
+

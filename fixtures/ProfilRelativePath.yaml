@@ -1,0 +1,4 @@
+App\Entity\ProfilRelativePath:
+  ProfilRelativePath{1..150}:
+    url: '<firstName()>'
+    userPicture: '@UserPicture*'

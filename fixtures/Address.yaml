@@ -1,0 +1,8 @@
+App\Entity\Address:
+  address{1..50}:
+    line1: '<username()>'
+    line2: '<username()>'
+    line3: '<username()>'
+    city:  'ville'
+    postalCode: '42200'
+   

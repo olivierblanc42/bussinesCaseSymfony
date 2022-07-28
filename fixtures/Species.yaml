@@ -1,0 +1,9 @@
+App\Entity\Species:
+  species01:
+    name: 'Chat'
+  species02:
+    name: 'Chien'
+  species03:
+    name: 'Rongeur'
+  species04:
+    name: 'Poisson'

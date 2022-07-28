@@ -1,0 +1,18 @@
+App\Entity\Category:
+  Category01:
+    label: 'Medical'
+  Category02:
+    label: 'jouet'
+  Category03:
+    label: 'nourriture'
+  Category04:
+    label: 'hygiène'
+  Category{1..100}: 
+    label: '<firstName()>'
+    parent: '@Category0*'
+    
+
+
+
+
+  

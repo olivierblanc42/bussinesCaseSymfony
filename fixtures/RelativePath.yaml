@@ -1,0 +1,6 @@
+App\Entity\RelativePath:
+  RelativePath{1..100}:
+    path: 'https://picsum.photos/200/300'
+  
+
+
