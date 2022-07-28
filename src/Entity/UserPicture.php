@@ -4,13 +4,10 @@ namespace App\Entity;
 
 use App\Repository\UserPictureRepository;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UserPictureRepository::class)]
-#[ApiResource(
-    collectionOperations: ['get', 'post'],
-    itemOperations: ['get', 'put', 'delete'],
-)]
 class UserPicture
 {
     #[ORM\Id]
@@ -19,13 +16,29 @@ class UserPicture
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
+    #[
+        Assert\NotBlank,
+        Assert\Length([
+            'min' => 2,
+            'max' => 50,
+        ]),
+    ]
     private ?string $name = null;
 
     #[ORM\OneToOne(inversedBy: 'userPicture', cascade: ['persist', 'remove'])]
     private ?User $user = null;
 
-    #[ORM\OneToOne(inversedBy: 'userPicture', cascade: ['persist', 'remove'])]
-    private ?ProfilRelativePath $profilRelativePath = null;
+    #[ORM\Column(length: 255)]
+    #[
+        Assert\NotBlank,
+        Assert\Length([
+            'min' => 2,
+            'max' => 255,
+        ]),
+    ]
+    private ?string $url = null;
+
+
 
     public function getId(): ?int
     {
@@ -56,15 +69,16 @@ class UserPicture
         return $this;
     }
 
-    public function getProfilRelativePath(): ?ProfilRelativePath
+    public function getUrl(): ?string
     {
-        return $this->profilRelativePath;
+        return $this->url;
     }
 
-    public function setProfilRelativePath(?ProfilRelativePath $profilRelativePath): self
+    public function setUrl(string $url): self
     {
-        $this->profilRelativePath = $profilRelativePath;
+        $this->url = $url;
 
         return $this;
     }
+
 }

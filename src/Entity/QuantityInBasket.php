@@ -4,12 +4,29 @@ namespace App\Entity;
 
 use App\Repository\QuantityInBasketRepository;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Doctrine\DBAL\Types\Types;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: QuantityInBasketRepository::class)]
 #[ApiResource(
-    collectionOperations: ['get', 'post'],
-    itemOperations: ['get', 'put', 'delete'],
+    collectionOperations: ['get' => [
+        // Limit access to get item operation only if the logged user is one of:
+        // - have ROLE_ADMIN
+        'security' => '
+            is_granted("ROLE_ADMIN")
+        ',
+    ],
+],
+itemOperations: [
+    'get' => [
+    // Limit access to get item operation only if the logged user is one of:
+    // - have ROLE_ADMIN
+    'security' => '
+        is_granted("ROLE_ADMIN")
+    ',
+    ],
+],
 )]
 class QuantityInBasket
 {
@@ -26,6 +43,9 @@ class QuantityInBasket
 
     #[ORM\ManyToOne(inversedBy: 'quantityInBaskets')]
     private ?Product $product = null;
+
+    #[ORM\Column(type: Types::DECIMAL, precision: 8, scale: 2, nullable: true)]
+    private ?string $price = null;
 
     public function getId(): ?int
     {
@@ -64,6 +84,18 @@ class QuantityInBasket
     public function setProduct(?Product $product): self
     {
         $this->product = $product;
+
+        return $this;
+    }
+
+    public function getPrice(): ?string
+    {
+        return $this->price;
+    }
+
+    public function setPrice(?string $price): self
+    {
+        $this->price = $price;
 
         return $this;
     }

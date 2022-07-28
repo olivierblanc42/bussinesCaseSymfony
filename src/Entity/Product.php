@@ -7,12 +7,28 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProductRepository::class)]
 #[ApiResource(
-    collectionOperations: ['get', 'post'],
-    itemOperations: ['get', 'put', 'delete'],
+    collectionOperations: ['get' => [
+        // Limit access to get item operation only if the logged user is one of:
+        // - have ROLE_ADMIN
+        'security' => '
+            is_granted("ROLE_ADMIN")
+        ',
+    ],
+],
+itemOperations: [
+    'get' => [
+    // Limit access to get item operation only if the logged user is one of:
+    // - have ROLE_ADMIN
+    'security' => '
+        is_granted("ROLE_ADMIN")
+    ',
+    ],
+],
 )]
 class Product
 {
@@ -22,13 +38,27 @@ class Product
     private ?int $id = null;
 
     #[ORM\Column(length: 60)]
+    #[
+        Assert\NotBlank,
+        Assert\Length([
+            'min' => 2,
+            'max' => 60,
+        ]),
+    ]
     private ?string $label = null;
 
     #[ORM\Column(length: 300, nullable: true)]
+    #[
+        Assert\NotBlank,
+        Assert\Length([
+            'min' => 2,
+            'max' => 300,
+        ]),
+    ]
     private ?string $description = null;
 
     #[ORM\Column]
-    private ?bool $isInstock = null;
+    private ?int $quantityInStock = null;
 
     #[ORM\Column]
     private ?bool $isActive = null;
@@ -97,14 +127,14 @@ class Product
 
  
 
-    public function isIsInstock(): ?bool
+    public function isQuantityInStock(): ?int
     {
-        return $this->isInstock;
+        return $this->quantityInStock;
     }
 
-    public function setIsInstock(bool $isInstock): self
+    public function setQuantityInStock(int $quantityInStock): self
     {
-        $this->isInstock = $isInstock;
+        $this->quantityInStock = $quantityInStock;
 
         return $this;
     }

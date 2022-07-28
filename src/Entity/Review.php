@@ -5,12 +5,28 @@ namespace App\Entity;
 use App\Repository\ReviewRepository;
 use Doctrine\DBAL\Types\Types;
 use ApiPlatform\Core\Annotation\ApiResource;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ReviewRepository::class)]
 #[ApiResource(
-    collectionOperations: ['get', 'post'],
-    itemOperations: ['get', 'put', 'delete'],
+    collectionOperations: ['get' => [
+        // Limit access to get item operation only if the logged user is one of:
+        // - have ROLE_ADMIN
+        'security' => '
+            is_granted("ROLE_ADMIN")
+        ',
+    ],
+],
+itemOperations: [
+    'get' => [
+    // Limit access to get item operation only if the logged user is one of:
+    // - have ROLE_ADMIN
+    'security' => '
+        is_granted("ROLE_ADMIN")
+    ',
+    ],
+],
 )]
 class Review
 {
@@ -23,6 +39,13 @@ class Review
     private ?int $note = null;
 
     #[ORM\Column(length: 300)]
+    #[
+        Assert\NotBlank,
+        Assert\Length([
+            'min' => 2,
+            'max' => 300,
+        ]),
+    ]
     private ?string $comment = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]

@@ -1,6 +1,7 @@
 App\Entity\UserPicture:
   UserPicture{1..150}:
     name: '<firstName()>'
+    url: 'https://picsum.photos/200/300'
 
   
 

@@ -6,12 +6,29 @@ use App\Repository\AddressRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: AddressRepository::class)]
 #[ApiResource(
-    collectionOperations: ['get', 'post'],
-    itemOperations: ['get', 'put', 'delete'],
+    collectionOperations: [
+        'get' => [
+        // Limit access to get item operation only if the logged user is one of:
+        // - have ROLE_ADMIN
+        'security' => '
+            is_granted("ROLE_ADMIN")
+        ',
+        ],
+],
+itemOperations: [
+    'get' => [
+    // Limit access to get item operation only if the logged user is one of:
+    // - have ROLE_ADMIN
+    'security' => '
+        is_granted("ROLE_ADMIN")
+    ',
+    ],
+],
 )]
 class Address
 {
@@ -21,18 +38,53 @@ class Address
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
+    #[
+        Assert\NotBlank,
+        Assert\Length([
+            'min' => 2,
+            'max' => 50,
+        ]),
+    ]
     private ?string $line1 = null;
 
     #[ORM\Column(length: 50)]
+    #[
+        Assert\NotBlank,
+        Assert\Length([
+            'min' => 2,
+            'max' => 50,
+        ]),
+    ]
     private ?string $line2 = null;
 
     #[ORM\Column(length: 50)]
+    #[
+        Assert\NotBlank,
+        Assert\Length([
+            'min' => 2,
+            'max' => 50,
+        ]),
+    ]
     private ?string $line3 = null;
 
     #[ORM\Column(length: 100)]
+    #[
+        Assert\NotBlank,
+        Assert\Length([
+            'min' => 2,
+            'max' => 100,
+        ]),
+    ]
     private ?string $city = null;
 
     #[ORM\Column(length: 10)]
+    #[
+        Assert\NotBlank,
+        Assert\Length([
+            'min' => 2,
+            'max' => 10,
+        ]),
+    ]
     private ?string $postalCode = null;
 
     #[ORM\OneToMany(mappedBy: 'address', targetEntity: User::class)]

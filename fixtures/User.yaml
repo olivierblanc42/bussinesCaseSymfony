@@ -1,7 +1,10 @@
+parameters:
+    password: '$2y$13$nl/pVnm4hf.aVKgrY1AIbucHGC78mny6lhCMOhNBrouBJw7.RknXq' # Issou2021
+
 App\Entity\User:
-  user{1..150}:
+  user (template):
     email: '<email()>'
-    password: '<email()>'
+    password: '<{password}>'
     firstName: '<firstName()>'
     lastName: '<lastName()>'
     dateOfBirth: '<dateTimeBetween("-7000 days", "now")>'
@@ -9,6 +12,15 @@ App\Entity\User:
     gender: '@gender*'
     address: '@address*'
     userPicture: '@UserPicture*'
+
+  user_admin (extends user):
+    email: 'admin@gmail.com'
+    firstName: 'amdin'
+    lastName: 'admin'
+    roles: ['ROLE_ADMIN']
+  
+  user{1..500} (extends user): ~
+ 
     
     
 
