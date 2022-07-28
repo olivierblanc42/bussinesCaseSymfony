@@ -3,9 +3,14 @@
 namespace App\Entity;
 
 use App\Repository\UserPictureRepository;
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UserPictureRepository::class)]
+#[ApiResource(
+    collectionOperations: ['get', 'post'],
+    itemOperations: ['get', 'put', 'delete'],
+)]
 class UserPicture
 {
     #[ORM\Id]

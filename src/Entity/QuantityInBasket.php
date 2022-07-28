@@ -3,9 +3,14 @@
 namespace App\Entity;
 
 use App\Repository\QuantityInBasketRepository;
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: QuantityInBasketRepository::class)]
+#[ApiResource(
+    collectionOperations: ['get', 'post'],
+    itemOperations: ['get', 'put', 'delete'],
+)]
 class QuantityInBasket
 {
     #[ORM\Id]

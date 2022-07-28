@@ -4,9 +4,14 @@ namespace App\Entity;
 
 use App\Repository\ReviewRepository;
 use Doctrine\DBAL\Types\Types;
+use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ReviewRepository::class)]
+#[ApiResource(
+    collectionOperations: ['get', 'post'],
+    itemOperations: ['get', 'put', 'delete'],
+)]
 class Review
 {
     #[ORM\Id]
