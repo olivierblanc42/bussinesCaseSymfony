@@ -1,0 +1,214 @@
+.cardProd {
+
+    width: 333px;
+    height: 550px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    margin-left: 10px;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+    background-color: #ffff;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125) 0px 3px 7px 50%;
+    border-radius: 0.25rem;
+
+    >img {
+        width: 70%;
+        height: 40%;
+        margin-top: 1rem;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+
+
+
+    .card-body {
+
+        flex: 1 1 auto;
+        padding: 1rem 1rem;
+        background-color: #f6f6f6;
+
+        h4 {
+            color: $bg-green;
+            text-transform: uppercase;
+            margin-bottom: 1.5rem;
+        }
+
+        >div {
+            margin-bottom: 1.5rem;
+        }
+
+        // a simplifier car il se répète.
+
+        .favorite {
+            display: inline-block;
+            background-image: url("../img/svg/bar_de_nav/favoris.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+            height: 24px;
+            width: 24px;
+        }
+
+
+        >img {
+            margin-bottom: 1.5rem;
+
+        }
+
+        p {
+            font-weight: bold;
+            font-size: 22px;
+        }
+
+        .btn-card {
+            margin-right: auto;
+            margin-left: auto;
+        }
+
+    }
+
+
+}
+
+// les cartes des avis client
+
+.cardClients {
+    width: 320px;
+    height: 320px;
+    margin-left: 10px;
+    box-shadow: rgba(0, 0, 0, 0.8) 0px 3px 7px 50%;
+    background-color: #f6f6f6;
+    text-align: center;
+    padding: 10px;
+    border-radius: 0.25rem;
+    
+
+    // le texte de la carte
+    >p {
+        margin-bottom: 25px;
+        margin-top: 15px;
+        font-size: 12px;
+        font-family: $font-banner;
+    }
+
+
+
+    >div>div {
+        margin-top: 10px;
+        margin-bottom: 5px;
+
+        :first-child {
+            padding-bottom: 5px;
+            margin-right: 5px;
+            width: 50px;
+            height: 50px;
+        }
+
+        :nth-child(2) {
+            display: none;
+
+        }
+
+        :last-child {
+            display: block;
+            margin-left: 5px;
+        }
+
+        p {
+            color: $bg-green;
+        }
+    }
+
+
+    // pour le moments les etoile sont en image jusqu'a que je trouve une solution 
+
+    // .stars {}
+
+    // media queries
+    @media (min-width: 1024px) {
+        width: 550px;
+        height: 380px;
+        margin-left: 10px;
+        box-shadow: rgba(0, 0, 0, 0.8) 0px 3px 7px 50%;
+        background-color: #f6f6f6;
+        text-align: center;
+        padding: 10px;
+        border-radius: 0.25rem;
+
+        >p {
+            margin-bottom: 30px;
+            margin-top: 30px;
+            font-size: 18px;
+
+        }
+
+
+        >div>div {
+            margin-bottom: 5px;
+
+            :first-child {
+                padding-bottom: 5px;
+                margin-right: 10px;
+                width: 70px;
+                height: 70px;
+            }
+
+            :nth-child(2) {
+                display: block;
+            }
+
+            :last-child {
+                display: block;
+                margin-right: none;
+                margin-left: 10px;
+            }
+
+            p {
+                color: $bg-green;
+            }
+        }
+
+
+    }
+}
+
+.card-i {
+    text-align: center;
+    width: 90%;
+    margin-bottom: 1rem;
+    margin-top: 1rem;
+    border-radius: 0.25rem;
+
+    
+}
+
+
+// les cartes de la bannières 
+
+.CardB {
+    width: 150px;
+    height: 150px;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+    background-color: #f6f6f6;
+    display: flex;
+    flex-direction: column;
+
+    justify-content: space-evenly;
+    border-radius: 0.25rem;
+
+    @media (min-width: 1024px) {
+        width: 312px;
+        height: 400px;
+        box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+
+        display: flex;
+        flex-direction: column;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        justify-content: space-around;
+    }
+
+}

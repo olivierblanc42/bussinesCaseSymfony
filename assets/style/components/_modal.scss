@@ -1,0 +1,28 @@
+.modal {
+    .modal-title {
+        color: $bg-green;
+        text-transform: uppercase;
+    }
+
+    .modal-body {
+        color: $bg-green;
+    }
+
+    .btn-primary{
+        background-color: $bg-green;
+        border-color: $bg-green;
+        margin-left: 1rem;
+    }
+    .btn-primary:hover{
+        background-color: #328475;
+        border-color: #328475;
+    }
+.btn-secondary{
+    margin-right: 1rem;
+}
+
+   a{
+   text-decoration: none;
+   color: $bg-green;
+   }
+}

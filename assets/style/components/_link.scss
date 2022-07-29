@@ -1,0 +1,148 @@
+.social,
+.payment,
+.socialForm
+ {
+
+    a {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        background-size: cover;
+
+        span {
+            display: none;
+        }
+
+    }
+}
+
+.delivery {
+    display: flex;
+    align-items: center;
+
+    a {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        margin-right: 0.8rem;
+    }
+
+
+    .delivery-log {
+//background-image: url("../img/svg/autre/delivery.svg");
+        background-size: cover;
+        background-repeat: no-repeat;
+
+    }
+
+    >p {
+        margin-bottom: 0;
+    }
+}
+
+.social {
+    .twitter {
+//background-image: url("../img/svg/social_media/twitter.svg");
+
+    }
+
+    .instagram {
+       // background-image: url("../img/svg/social_media/instagram.svg");
+
+
+    }
+
+    .facebook {
+       // background-image: url("../img/svg/social_media/facebook.svg");
+
+    }
+}
+
+
+
+  
+
+ 
+
+
+
+.socialForm{
+     .twitter {
+        //background-image: url("../img/svg/social_media/twitterBlack.svg");
+
+    }
+
+    .instagram {
+       // background-image: url("../img/svg/social_media/instagramBlack.svg");
+
+
+    }
+
+    .facebook {
+       // background-image: url("../img/svg/social_media/facebookblack.svg");
+
+    }
+}
+
+
+
+
+.payment {
+    .mastercard {
+       // background-image: url("../img/svg/payment/mastercard.svg");
+
+    }
+
+    .paypal {
+        //background-image: url("../img/svg/payment/paypal.svg");
+
+    }
+
+    .visa {
+       // background-image: url("../img/svg/payment/visa.svg");
+
+    }
+}
+
+
+
+
+
+// lien CardB 
+
+.money{
+    display: inline-block;
+    width: 35px;
+    height: 35px;
+    background-size: cover;
+    //background-image: url("../img/svg/card/money.svg");
+}
+.flash {
+    display: inline-block;
+    width: 40px;
+    height: 45px;
+    background-size: cover;
+   // background-image: url("../img/svg/card/flash.svg");
+}
+
+// Info in form
+
+.telephone,.location,.schedule{
+
+    a {
+        display: inline-block;
+        width: 50px;
+        height: 50px;
+        background-size: cover;
+
+     
+      
+
+    }
+
+    //TO DO AJOUTER DES LOGO
+
+
+}
+
+

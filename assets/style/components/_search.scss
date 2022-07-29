@@ -1,0 +1,109 @@
+.search-form {
+    position: relative;
+    height: 32px;
+    width: 320px;
+    border: 1px solid;
+    border-radius: 3px;
+    border: 1px solid $bg-green;
+
+    input[type="text"] {
+        display: inline-block;
+        position: absolute;
+        padding: 2px 64px 2px 12px;
+        height: 32px;
+        width: 510px;
+        background: transparent;
+        border: none;
+        box-sizing: border-box;
+        margin: 0;
+
+        input[type="text"]:focus {
+            border: none;
+            outline: var(--grey);
+            box-shadow: var(--box-shadow);
+        }
+    }
+
+    input[type="submit"] {
+        display: inline-block;
+        height: 16px;
+        width: 16px;
+        margin: 8px;
+        background-image: url('../img/svg/autre/search.svg');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-color: transparent;
+        border: none;
+        position: absolute;
+        right: 0;
+        top: 0;
+        cursor: pointer;
+
+    }
+
+    input[type="text"]:focus {
+        border: none;
+        outline: var(--grey);
+        box-shadow: var(--box-shadow);
+    }
+}
+
+
+
+
+
+
+@media (min-width: 1024px) {
+
+    .search-form {
+        position: relative;
+        height: 32px;
+        width: 510px;
+        border: 1px solid;
+        border-radius: 3px;
+        border: 1px solid $bg-green;
+
+        input[type="text"] {
+            display: inline-block;
+            position: absolute;
+            padding: 2px 64px 2px 12px;
+            height: 32px;
+            width: 510px;
+            background: transparent;
+            border: none;
+            box-sizing: border-box;
+            margin: 0;
+
+            input[type="text"]:focus {
+                border: none;
+                outline: var(--grey);
+                box-shadow: var(--box-shadow);
+            }
+        }
+
+        input[type="submit"] {
+            display: inline-block;
+            height: 16px;
+            width: 16px;
+            padding: $padding-s;
+            background-image: url('../img/svg/autre/search.svg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: transparent;
+            border: none;
+            position: absolute;
+            right: 0;
+            top: 0;
+            cursor: pointer;
+
+        }
+
+        input[type="text"]:focus {
+            border: none;
+            outline: var(--grey);
+            box-shadow: var(--box-shadow);
+        }
+    }
+}

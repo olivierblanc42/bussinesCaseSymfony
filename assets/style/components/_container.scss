@@ -1,0 +1,78 @@
+ .container-flex {
+     display: flex;
+     flex-direction: row;
+     align-items: center;
+     justify-content: space-between;
+     padding-left: 1rem;
+     padding-right: 1rem;
+
+     p {
+         margin-bottom: 0;
+     }
+ }
+
+
+
+ 
+
+ //container Footer
+ .container-footer {
+
+     display: flex;
+     flex-direction: column;
+     align-items: center;
+     padding-left: 1rem;
+     padding-right: 1rem;
+
+     >div {
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+         justify-content: space-between;
+         padding-left: 1rem;
+         padding-right: 1rem;
+
+     }
+
+     @media (min-width: 1024px){
+
+       
+        >div {
+            width: 100%;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-evenly;
+            padding-left: 1rem;
+            padding-right: 1rem;
+   
+        }
+   
+
+    }
+
+ }
+
+ // Container Card 
+
+.container-card{
+//container card Mobile
+display: flex;
+flex-direction: column;
+align-items: center;
+padding-left: 1rem;
+padding-right: 1rem;
+justify-content: space-between;
+
+    //container card media 1024PX
+    @media (min-width: 1024px){
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding-left: 1rem;
+        padding-right: 1rem;
+        justify-content: space-between;
+    }
+
+}

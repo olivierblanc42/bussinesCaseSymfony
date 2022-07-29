@@ -1,0 +1,257 @@
+/*SECTION CARD BANNNER*/
+
+#cardsBanner {
+   z-index: 1;
+   position: absolute;
+   left: 20px;
+   right: 20px;
+   top: 50%;
+   width: 350px;
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: space-evenly;
+   padding-left: 1rem;
+   padding-right: 1rem;
+ 
+   :nth-child(2){
+      margin-left: 10px;
+      margin-right: 10px;
+   }
+ 
+.card1{
+   img{display: none;}
+
+   .utils{
+       display: none;
+   }
+    
+   @media (min-width: 1024px){
+// to do voir le margin des deux utils 
+     .utils{
+           display: flex;
+           flex-direction: row;
+          :first-child{
+            margin-right: 0.5rem;
+          }
+          :nth-child(2){
+            margin-left: 0.5rem;
+          }
+        .util{
+          display: flex;
+             flex-direction: column;
+             justify-content: space-evenly;
+             text-align: center;
+             width: 126px;
+             height: 60px;
+             box-shadow: rgba(0, 0, 0, 0.8) 0px 3px 7px 50%;
+             background-color: #f2f2f2;
+             text-align: center;
+             border-radius: 0.25rem;
+        }
+     }
+   
+      
+   }
+
+
+
+
+   
+}
+
+ 
+ 
+ 
+   .card2And3 {
+
+      img {
+         max-width: 100%;
+         height: 50%;
+      }
+      p {
+         font-size: 15px;
+      }
+      a {
+         color: $bg-yellow;
+      }
+   
+      }
+ 
+ 
+   
+   @media (min-width: 1024px) {
+      z-index: 1;
+      position: absolute;
+      left: 40px;
+      right: 40px;
+      top: 50%;
+      width: 1300px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: space-evenly;
+      padding-left: 1rem;
+      padding-right: 1rem;
+      .card2And3 {
+         p {
+            margin-bottom: 10px;
+            font-size: 22px;
+         }
+      
+         img {
+            max-width: 100%;
+            height: 50%;
+         }
+      
+         a {
+            color: $bg-yellow;
+         }
+      }
+
+      .card1{
+         img{display: block;}
+           
+       
+         
+      }
+      
+
+
+   }
+}
+
+
+
+
+
+
+/* SECTION INFO*/
+
+
+#info {
+
+
+  
+
+   >div {
+      margin-top: 0px;
+      margin-left: auto;
+      margin-right: auto;
+
+   }
+
+   :last-child {
+      margin-bottom: 0%;
+   }
+      @media (min-width: 1024px) {
+         display: flex;
+         flex-direction: row;
+     
+         :first-child{
+            margin-left: 10px;
+         }
+
+>div{
+   margin-right: 10px ;
+}
+
+      
+      }
+
+}
+
+
+
+/*  Section Products    */
+
+
+#products{
+    h2{
+
+      position: relative;
+      overflow: hidden;
+      margin-bottom: 0.5rem;
+      
+  
+span{
+   color: $bg-green;
+}
+      &:after {
+          display: inline-block;
+          content: "";
+          height: 4px;
+          border: 50px;
+          background: $bg-green;
+          position: absolute;
+          width: 100%;
+          top: 50%;
+          margin-top: -2px;
+          margin-left: 10px;
+      }
+  }
+
+
+}
+
+
+
+/*Page produit*/
+#product{
+
+   .descritption{
+      h2{
+         color: $bg-green;
+      }
+   } 
+   
+}
+
+
+// div:first-child {
+//    align-items: center;
+
+//    // User Avatar
+//    :first-child {
+
+//       display: flex;
+//       flex-direction: row;
+//       align-items: center;
+
+//       img {
+//          margin-right: 0.8rem;
+//          width: 71px;
+//          height: 71px;
+//       }
+
+//    }
+// }
+
+//    // Interactive money and flash 
+//    :nth-child(2) {
+//       display: flex;
+//       flex-direction: row;
+//       align-items: center;
+
+//       :last-child {
+//          margin-left: 10px;
+//          margin-right: 0px;
+//       }
+
+//       //interactive 
+//       >div {
+//          display: flex;
+//          flex-direction: column;
+//          align-items: center;
+//          margin-right: 0.5rem;
+//       }
+//    }
+//    // Button 
+//    :last-child {
+//       display: flex;
+//       flex-direction: column;
+//    }
+// }
+// }
+
+

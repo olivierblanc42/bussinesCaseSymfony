@@ -1,0 +1,174 @@
+//**first nav**//
+
+.nav-1 {
+    background-color: $bg-green;
+    height: 89px;
+
+    @media screen and (min-width: 1024px) {
+        background-color: transparent;
+        height: auto;
+    }
+
+    .menu {
+        display: inline-block;
+        width: 33px;
+        height: 30px;
+        background-image: url("../img/svg/autre/menu.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+
+
+        //   display none le menu en 1024px
+        @media screen and (min-width: 1024px) {
+            display: none;
+        }
+    }
+
+    .backet {
+        display: inline-block;
+        width: 33px;
+        height: 30px;
+        background-image: url("../img/svg/autre/backet.svg");
+        background-size: contain;
+        background-repeat: no-repeat;
+
+        @media screen and (min-width: 1024px) {
+            display: none;
+        }
+
+    }
+
+    .search-form {
+
+        display: none;
+
+        @media screen and (min-width: 1024px) {
+            display: block;
+        }
+
+    }
+}
+
+.nav-1-left {
+    >a {
+        margin-right: 1.5rem;
+    }
+
+    @media screen and (min-width: 1024px) {
+        >div {
+            margin-right: 5rem;
+        }
+
+        >div:last-child {
+            margin-right: 0;
+        }
+
+    }
+}
+
+
+//**Second Nav**//
+.nav-2 {
+display: none;
+
+    @media screen and (min-width: 1024px) {
+        height: 48px;
+
+    .nav-menu {
+        width: 20%;
+ padding-right: 50px;
+        .menu {
+            display: inline-block;
+            background-image: url("../img/svg/autre/menu.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+            height: 30px;
+            width: 30px;
+            font-size: 13px;
+        }
+
+    }
+
+
+    .nav-icon {
+        width: 60%;
+
+
+
+        a {
+            display: inline-block;
+            width: 24px;
+            height: 24px;
+        }
+
+
+        .cats {
+            background-image: url("../img/svg/bar_de_nav/cat.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+
+        }
+
+        .dogs {
+            background-image: url("../img/svg/bar_de_nav/dog.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+
+        }
+
+        .rodents {
+            background-image: url("../img/svg/bar_de_nav/rabbit.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+
+        }
+
+        .fishs {
+            background-image: url("../img/svg/bar_de_nav/fish.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+
+        }
+
+        .nav-space {
+            
+            background-image: url("../img/svg/autre/rocket-launch.svg");
+            background-repeat: no-repeat;
+            background-size: contain; 
+        }
+    }
+
+
+    .nav-utils {
+        width: 20%;
+        padding-left: 50px;
+        padding-right: 125px;
+        
+
+        .favorite {
+            display: inline-block;
+            background-image: url("../img/svg/bar_de_nav/favoris.svg");
+            background-repeat: no-repeat;
+            background-size: contain;
+            height: 24px;
+            width: 24px;
+
+        }
+    }
+
+    .backet {
+        display: inline-block;
+        background-image: url("../img/svg/autre/backet.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 24px;
+        width: 24px;
+    }
+ 
+
+    }
+
+  
+
+
+}
