@@ -56,6 +56,29 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
         $this->add($user, true);
     }
 
+
+    public function getNumberOfUser(): array
+    {
+        return $this->createQueryBuilder('user')
+            ->select('COUNT(user)')
+            ->getQuery()
+            ->getResult();
+    }
+
+    public function getNewClient()
+    {
+        $date = new \DateTime('first day of this month');
+        $date = date('Y-m-d', strtotime($date->format('Y-m-d')));
+
+        // SELECT * FROM user AS user
+        return $this->createQueryBuilder('user')
+            ->select('COUNT(user)')
+            ->where('user.registrationDate >= :date')
+            ->setParameter('date', $date)
+            ->getQuery()
+            ->getResult();
+    }
+
 //    /**
 //     * @return User[] Returns an array of User objects
 //     */

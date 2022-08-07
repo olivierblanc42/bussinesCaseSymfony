@@ -39,6 +39,22 @@ class ProductRepository extends ServiceEntityRepository
         }
     }
 
+
+    public function getBestProducts()
+    {
+
+
+        // SELECT * FROM user AS user
+        return $this->createQueryBuilder('product')
+            ->select('product.label','quantityInBaskets.quantity')
+            ->join('product.quantityInBaskets','quantityInBaskets')
+            ->orderBy('quantityInBaskets.quantity','DESC')
+            ->getQuery()
+            ->getResult();
+    }
+
+
+
 //    /**
 //     * @return Product[] Returns an array of Product objects
 //     */

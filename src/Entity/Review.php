@@ -10,23 +10,10 @@ use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ReviewRepository::class)]
 #[ApiResource(
-    collectionOperations: ['get' => [
-        // Limit access to get item operation only if the logged user is one of:
-        // - have ROLE_ADMIN
-        'security' => '
-            is_granted("ROLE_ADMIN")
-        ',
-    ],
-],
-itemOperations: [
-    'get' => [
-    // Limit access to get item operation only if the logged user is one of:
-    // - have ROLE_ADMIN
-    'security' => '
-        is_granted("ROLE_ADMIN")
-    ',
-    ],
-],
+    collectionOperations: [],
+    itemOperations: [
+        "get" => ["security" => "is_granted('ROLE_ADMIN')"],
+        ]
 )]
 class Review
 {

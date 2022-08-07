@@ -1,5 +1,56 @@
 # validators.en.yaml
 
-token:
-    createdAt:
+user:
+    dateOfBirth:
         NotBlank: 'Please set a value..'
+        LessThan: '-16 years'
+    lastName:
+        NotBlank: 'Please set a value..'
+        minMessage: 'the number of characters is less than 2'
+        maxMessage: 'the number of characters is less is greater than 50'
+    firstName:
+        NotBlank: 'Please set a value..'
+        minMessage: 'the number of characters is less than 2'
+        maxMessage: 'the number of characters is less is greater than 50'
+    email:
+        NotBlank: 'Please set a value..'
+        minMessage: 'the number of characters is less than 5'
+        maxMessage: 'the number of characters is less is greater than 180'
+    username:
+        NotBlank: 'Please set a value..'
+        minMessage: 'the number of characters is less than 5'
+        maxMessage: 'the number of characters is less is greater than 180'
+
+product:
+    label:
+        NotBlank: 'Please set a value..'
+        minMessage: 'the number of characters is less than 2'
+        maxMessage: 'the number of characters is less is greater than 60'
+    description:
+        NotBlank: 'Please set a value..'
+        minMessage: 'the number of characters is less than 2'
+        maxMessage: 'the number of characters is less is greater than 300'
+    priceHt:
+        LessThan: 'the number must be greater than 0'
+    quantityInStock:
+        LessThan: 'the number must be greater than 0'
+        
+picture:
+    path:
+        NotBlank: 'Please set a value..'
+        minMessage: 'the number of characters is less than 2'
+        maxMessage: 'the number of characters is less is greater than 500'
+    name:
+        NotBlank: 'Please set a value..'
+        minMessage: 'the number of characters is less than 2'
+        maxMessage: 'the number of characters is less is greater than 50'
+
+userpicture:
+    name:
+        NotBlank: 'Please set a value..'
+        minMessage: 'the number of characters is less than 2'
+        maxMessage: 'the number of characters is less is greater than 50'
+    url:
+        NotBlank: 'Please set a value..'
+        minMessage: 'the number of characters is less than 2'
+        maxMessage: 'the number of characters is less is greater than 255'

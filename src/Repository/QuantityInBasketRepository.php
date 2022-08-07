@@ -4,6 +4,8 @@ namespace App\Repository;
 
 use App\Entity\QuantityInBasket;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
+use Doctrine\ORM\NoResultException;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -38,6 +40,9 @@ class QuantityInBasketRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+
+
 
 //    /**
 //     * @return QuantityInBasket[] Returns an array of QuantityInBasket objects

@@ -2,20 +2,22 @@
 
 namespace App\Entity;
 
-use App\Repository\QuantityInBasketRepository;
+
 use ApiPlatform\Core\Annotation\ApiResource;
-use Doctrine\DBAL\Types\Types;
 use Symfony\Component\Validator\Constraints as Assert;
+use App\Controller\TotalSalesController;
+use App\Repository\QuantityInBasketRepository;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: QuantityInBasketRepository::class)]
 #[ApiResource(
-    collectionOperations: ['get' => [
+    collectionOperations: [    'get' => [
         // Limit access to get item operation only if the logged user is one of:
         // - have ROLE_ADMIN
         'security' => '
-            is_granted("ROLE_ADMIN")
-        ',
+        is_granted("ROLE_ADMIN") or  is_granted("ROLE_STATS")
+    ',
     ],
 ],
 itemOperations: [
@@ -23,7 +25,7 @@ itemOperations: [
     // Limit access to get item operation only if the logged user is one of:
     // - have ROLE_ADMIN
     'security' => '
-        is_granted("ROLE_ADMIN")
+        is_granted("ROLE_ADMIN") or  is_granted("ROLE_STATS")
     ',
     ],
 ],
@@ -36,6 +38,12 @@ class QuantityInBasket
     private ?int $id = null;
 
     #[ORM\Column]
+    #[
+        Assert\LessThan(
+            value:0,
+            message: 'product.quantityInStock.LessThan',
+        ),
+    ]
     private ?int $quantity = null;
 
     #[ORM\ManyToOne(inversedBy: 'basketQuantityInBasket')]

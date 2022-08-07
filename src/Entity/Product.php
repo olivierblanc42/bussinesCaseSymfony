@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use App\Controller\BestSellingController;
 use App\Repository\ProductRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -16,16 +17,26 @@ use Doctrine\ORM\Mapping as ORM;
         // Limit access to get item operation only if the logged user is one of:
         // - have ROLE_ADMIN
         'security' => '
-            is_granted("ROLE_ADMIN")
+            is_granted("ROLE_ADMIN") or  is_granted("ROLE_STATS")
         ',
     ],
+        'get_best_product' => [
+            // Limit access to get item operation only if the logged user is one of:
+            // - have ROLE_ADMIN
+            'security' => ' is_granted("ROLE_STATS")',
+            'method' => 'GET',
+            'path' => '/stats/best_product',
+            'controller' => BestSellingController::class,
+        ],
+
+
 ],
 itemOperations: [
     'get' => [
     // Limit access to get item operation only if the logged user is one of:
     // - have ROLE_ADMIN
     'security' => '
-        is_granted("ROLE_ADMIN")
+        is_granted("ROLE_ADMIN") or  is_granted("ROLE_STATS")
     ',
     ],
 ],
@@ -39,31 +50,51 @@ class Product
 
     #[ORM\Column(length: 60)]
     #[
-        Assert\NotBlank,
-        Assert\Length([
-            'min' => 2,
-            'max' => 60,
-        ]),
+        Assert\NotBlank(
+            message: 'product.label.NotBlank',
+        ),
+        Assert\Length(
+            min: 5,
+            max: 60,
+            minMessage: 'product.label.minMessage' ,
+            maxMessage: 'product.label.maxMessage' ,
+        ),
     ]
     private ?string $label = null;
 
     #[ORM\Column(length: 300, nullable: true)]
     #[
-        Assert\NotBlank,
-        Assert\Length([
-            'min' => 2,
-            'max' => 300,
-        ]),
+        Assert\NotBlank(
+            message: 'product.description.NotBlank',
+        ),
+        Assert\Length(
+            min: 5,
+            max: 60,
+            minMessage: 'product.description.minMessage' ,
+            maxMessage: 'product.description.maxMessage' ,
+        ),
     ]
     private ?string $description = null;
 
     #[ORM\Column]
+    #[
+        Assert\LessThan(
+            value:0,
+            message: 'product.quantityInStock.LessThan            ',
+        ),
+    ]
     private ?int $quantityInStock = null;
 
     #[ORM\Column]
     private ?bool $isActive = null;
 
     #[ORM\Column(type: Types::DECIMAL, precision: 8, scale: 2)]
+    #[
+        Assert\LessThan(
+            value:0,
+            message: 'product.priceHt.LessThan            ',
+        ),
+    ]
     private ?string $priceHt = null;
 
     #[ORM\ManyToOne(inversedBy: 'products')]

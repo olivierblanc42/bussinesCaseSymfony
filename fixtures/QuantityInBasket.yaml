@@ -3,4 +3,5 @@ App\Entity\QuantityInBasket:
     quantity: '<numberBetween(1, 3)>'
     basket: '@basket*'
     product: '@product*'
+    price: 20
 

@@ -11,23 +11,10 @@ use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: GenderRepository::class)]
 #[ApiResource(
-    collectionOperations: ['get' => [
-        // Limit access to get item operation only if the logged user is one of:
-        // - have ROLE_ADMIN
-        'security' => '
-            is_granted("ROLE_ADMIN")
-        ',
-    ],
-],
-itemOperations: [
-    'get' => [
-    // Limit access to get item operation only if the logged user is one of:
-    // - have ROLE_ADMIN
-    'security' => '
-        is_granted("ROLE_ADMIN")
-    ',
-    ],
-],
+    collectionOperations: [],
+    itemOperations: [
+        "get" => ["security" => "is_granted('ROLE_ADMIN')"],
+        ]
 )]
 class Gender
 {
@@ -37,6 +24,13 @@ class Gender
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
+    #[
+        Assert\NotBlank,
+        Assert\Length([
+            'min' => 2,
+            'max' => 50,
+        ]),
+    ]
     private ?string $label = null;
 
     #[ORM\OneToMany(mappedBy: 'gender', targetEntity: User::class)]

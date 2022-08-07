@@ -2,11 +2,13 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
+use App\Controller\CountUserController;
+use App\Controller\NewUsersController;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
-use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\PasswordAuthenticatedUserInterface;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -14,23 +16,33 @@ use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: UserRepository::class)]
 #[ApiResource(
-    collectionOperations: ['get' => [
+    collectionOperations: ['get_user' => [
         // Limit access to get item operation only if the logged user is one of:
         // - have ROLE_ADMIN
-        'security' => '
-            is_granted("ROLE_ADMIN")
-        ',
+        'security' => ' is_granted("ROLE_STATS")',
+        'method'   => 'GET',
+        'path' => '/stats/user_number',
+        'controller'=> CountUserController::class,
+    ],'get_New_user' => [
+        // Limit access to get item operation only if the logged user is one of:
+        // - have ROLE_ADMIN
+        'security' => ' is_granted("ROLE_STATS")',
+        'method'   => 'GET',
+        'path' => '/stats/new_user',
+        'controller'=> NewUsersController::class,
     ],
-   
+
+ 
 ],
 itemOperations: [
     'get' => [
     // Limit access to get item operation only if the logged user is one of:
     // - have ROLE_ADMIN
     'security' => '
-        is_granted("ROLE_ADMIN")
+    is_granted("ROLE_ADMIN")  or  is_granted("ROLE_STATS")
     ',
     ],
+    
 ],
 )]
 class User implements UserInterface, PasswordAuthenticatedUserInterface
@@ -42,13 +54,32 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 180, unique: true)]
     #[
-        Assert\NotBlank,
-        Assert\Length([
-            'min' => 10,
-            'max' => 180,
-        ]),
+        Assert\NotBlank(
+            message: 'user.email.NotBlank',
+        ),
+        Assert\Length(
+            min: 5,
+            max: 180,
+            minMessage: 'user.email.minMessage' ,
+            maxMessage: 'user.email.maxMessage' ,
+        ),
     ]
     private ?string $email = null;
+
+
+    #[ORM\Column(length: 180, unique: true)]
+    #[
+        Assert\NotBlank(
+            message: 'user.email.NotBlank',
+        ),
+        Assert\Length(
+            min: 2,
+            max: 180,
+            minMessage: 'user.username.minMessage' ,
+            maxMessage: 'user.username.maxMessage' ,
+        ),
+    ]
+    private ?string $username = null;
 
 
     #[ORM\Column]
@@ -62,30 +93,41 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
 
     #[ORM\Column(length: 50)]
     #[
-        Assert\NotBlank,
-        Assert\Length([
-            'min' => 2,
-            'max' => 50,
-        ]),
+        Assert\NotBlank(
+            message: 'user.firstName.NotBlank',
+        ),
+        Assert\Length(
+            min: 2,
+            max: 50,
+            minMessage: 'user.firstName.minMessage' ,
+            maxMessage: 'user.firstName.maxMessage' ,
+        ),
     ]
     private ?string $firstName = null;
 
     #[ORM\Column(length: 50)]
     #[
-        Assert\NotBlank,
-        Assert\Length([
-            'min' => 2,
-            'max' => 50,
-        ]),
+        Assert\NotBlank(
+            message: 'user.lastName.NotBlank',
+        ),
+        Assert\Length(
+            min: 2,
+            max: 50,
+            minMessage: 'user.lastName.minMessage' ,
+            maxMessage: 'user.lastName.maxMessage' ,
+        ),
     ]
     private ?string $lastName = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     #[
-        Assert\NotBlank([
-            'message' => 'token.createdAt.NotBlank',
-        ]),
-        Assert\LessThan('now'),
+        Assert\NotBlank(
+            message: 'user.dateOfBirth.NotBlank',
+        ),
+        Assert\LessThan(
+            message: 'user.dateOfBirth.LessThan',
+            value: ('-16 years'),
+        ),
     ]
     private ?\DateTimeInterface $dateOfBirth = null;
 
@@ -133,6 +175,18 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
+    public function getUsername(): ?string
+    {
+        return $this->username;
+    }
+
+    public function setUsername(string $username): self
+    {
+        $this->username = $username;
+
+        return $this;
+    }
+
     /**
      * A visual identifier that represents this user.
      *
@@ -140,7 +194,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
      */
     public function getUserIdentifier(): string
     {
-        return (string) $this->email;
+        return (string) $this->username;
     }
 
     /**

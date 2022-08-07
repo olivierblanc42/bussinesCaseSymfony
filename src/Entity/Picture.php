@@ -16,12 +16,34 @@ class Picture
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
+    #[
+        Assert\NotBlank(
+            message: 'name.path.NotBlank',
+        ),
+        Assert\Length(
+            min: 2,
+            max: 50,
+            minMessage: 'name.path.minMessage' ,
+            maxMessage: 'name.path.maxMessage' ,
+        ),
+    ]
     private ?string $name = null;
 
     #[ORM\ManyToOne(inversedBy: 'picture')]
     private ?Product $product = null;
 
     #[ORM\Column(length: 500)]
+    #[
+        Assert\NotBlank(
+            message: 'picture.path.NotBlank',
+        ),
+        Assert\Length(
+            min: 2,
+            max: 500,
+            minMessage: 'picture.path.minMessage' ,
+            maxMessage: 'picture.path.maxMessage' ,
+        ),
+    ]
     private ?string $path = null;
 
     public function getId(): ?int

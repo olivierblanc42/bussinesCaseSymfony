@@ -8,6 +8,12 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: UserPictureRepository::class)]
+#[ApiResource(
+    collectionOperations: [],
+    itemOperations: [
+        "get" => ["security" => "is_granted('ROLE_ADMIN')"],
+        ]
+)]
 class UserPicture
 {
     #[ORM\Id]
@@ -17,11 +23,15 @@ class UserPicture
 
     #[ORM\Column(length: 50)]
     #[
-        Assert\NotBlank,
-        Assert\Length([
-            'min' => 2,
-            'max' => 50,
-        ]),
+        Assert\NotBlank(
+            message: 'userpicture.name.NotBlank',
+        ),
+        Assert\Length(
+            min: 5,
+            max: 50,
+            minMessage: 'userpicture.name.minMessage' ,
+            maxMessage: 'userpicture.name.maxMessage' ,
+        ),
     ]
     private ?string $name = null;
 
@@ -30,11 +40,15 @@ class UserPicture
 
     #[ORM\Column(length: 255)]
     #[
-        Assert\NotBlank,
-        Assert\Length([
-            'min' => 2,
-            'max' => 255,
-        ]),
+        Assert\NotBlank(
+            message: 'userpicture.url.NotBlank',
+        ),
+        Assert\Length(
+            min: 5,
+            max: 255,
+            minMessage: 'userpicture.url.minMessage' ,
+            maxMessage: 'userpicture.url.maxMessage' ,
+        ),
     ]
     private ?string $url = null;
 

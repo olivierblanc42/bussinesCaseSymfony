@@ -2,33 +2,108 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiResource;
+use App\Controller\AverageBasketPriceController;
+use App\Controller\BasketConvertionController;
+use App\Controller\BasketCanceledController;
+use App\Controller\BasketincommandController;
+use App\Controller\NumberOfBasketController;
+use App\Controller\RecurciveController;
+use App\Controller\TotalOfCommandController;
+use App\Controller\TotalSalesController;
+use App\Controller\AverageBasketAbandonnedController;
 use App\Repository\BasketRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
-use ApiPlatform\Core\Annotation\ApiResource;
 use Doctrine\DBAL\Types\Types;
-use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BasketRepository::class)]
 #[ApiResource(
-    collectionOperations: ['get' => [
-        // Limit access to get item operation only if the logged user is one of:
-        // - have ROLE_ADMIN
-        'security' => '
-            is_granted("ROLE_ADMIN")
-        ',
+    collectionOperations: [
+        'get_basket' => [
+            // Limit access to get item operation only if the logged user is one of:
+            // - have ROLE_ADMIN
+            'security' => ' is_granted("ROLE_STATS")',
+            'method' => 'GET',
+            'path' => '/stats/basket_number',
+            'controller' => NumberOfBasketController::class,
+        ],
+        'get_command' => [
+            // Limit access to get item operation only if the logged user is one of:
+            // - have ROLE_ADMIN
+            'security' => ' is_granted("ROLE_STATS")',
+            'method' => 'GET',
+            'path' => '/stats/command_number',
+            'controller' => TotalOfCommandController::class,
+        ],
+        'get_sales' => [
+            // Limit access to get item operation only if the logged user is one of:
+            // - have ROLE_ADMIN
+            'security' => ' is_granted("ROLE_STATS")',
+            'method' => 'GET',
+            'path' => '/stats/total_sales',
+            'controller' => TotalSalesController::class,
+        ],
+        'get_cancel' => [
+            // Limit access to get item operation only if the logged user is one of:
+            // - have ROLE_ADMIN
+            'security' => ' is_granted("ROLE_STATS")',
+            'method' => 'GET',
+            'path' => '/stats/number_Of_Basket_Cancel',
+            'controller' => BasketCanceledController::class,
+        ],
+        'get_average' => [
+            // Limit access to get item operation only if the logged user is one of:
+            // - have ROLE_ADMIN
+            'security' => ' is_granted("ROLE_STATS")',
+            'method' => 'GET',
+            'path' => '/stats/basket_average_value',
+            'controller' => AverageBasketPriceController::class,
+        ],
+        'get_abbandoned' => [
+            // Limit access to get item operation only if the logged user is one of:
+            // - have ROLE_ADMIN
+            'security' => ' is_granted("ROLE_STATS")',
+            'method' => 'GET',
+            'path' => '/stats/basket_abbandoned',
+            'controller' => AverageBasketAbandonnedController::class,
+        ],
+        'get_command_average' => [
+            // Limit access to get item operation only if the logged user is one of:
+            // - have ROLE_ADMIN
+            'security' => ' is_granted("ROLE_STATS")',
+            'method' => 'GET',
+            'path' => '/stats/basket_in_command',
+            'controller' => BasketincommandController::class,
+        ],
+        'get_visit_basket' => [
+            // Limit access to get item operation only if the logged user is one of:
+            // - have ROLE_ADMIN
+            'security' => ' is_granted("ROLE_STATS")',
+            'method' => 'GET',
+            'path' => '/stats/conversion_basket_client',
+            'controller' => BasketConvertionController::class,
+        ],
+        'get_recurance' => [
+            // Limit access to get item operation only if the logged user is one of:
+            // - have ROLE_ADMIN
+            'security' => ' is_granted("ROLE_STATS")',
+            'method' => 'GET',
+            'path' => '/stats/recurance',
+            'controller' => RecurciveController::class,
+        ],
     ],
-],
-itemOperations: [
-    'get' => [
-    // Limit access to get item operation only if the logged user is one of:
-    // - have ROLE_ADMIN
-    'security' => '
-        is_granted("ROLE_ADMIN")
-    ',
+
+    itemOperations: [
+        'get' => [
+            // Limit access to get item operation only if the logged user is one of:
+            // - have ROLE_ADMIN
+            'security' => '
+        is_granted("ROLE_ADMIN")  or  is_granted("ROLE_STATS")
+    ',],
+
     ],
-],
 )]
 class Basket
 {
@@ -38,6 +113,7 @@ class Basket
     private ?int $id = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
+
     private ?\DateTimeInterface $dateCreated = null;
 
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
@@ -49,15 +125,14 @@ class Basket
     #[ORM\ManyToOne(inversedBy: 'basket')]
     private ?User $user = null;
 
-  
 
-    #[ORM\ManyToOne(inversedBy: 'baskets')]
+    #[ORM\ManyToOne(targetEntity: Address::class, inversedBy: 'baskets')]
     private ?Address $address = null;
 
-    #[ORM\ManyToOne(inversedBy: 'baskets')]
+    #[ORM\ManyToOne(inversedBy: 'baskets' )]
     private ?MeansOfPayment $meansOfPayment = null;
 
-    #[ORM\ManyToOne(inversedBy: 'baskets')]
+    #[ORM\ManyToOne( targetEntity: CommandStatus::class, inversedBy: 'baskets')]
     private ?CommandStatus $commandStatus = null;
 
     #[ORM\OneToMany(mappedBy: 'basket', targetEntity: QuantityInBasket::class)]
@@ -120,7 +195,6 @@ class Basket
 
         return $this;
     }
-
 
 
     public function getAddress(): ?Address

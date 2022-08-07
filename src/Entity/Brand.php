@@ -15,7 +15,9 @@ use Doctrine\ORM\Mapping as ORM;
         // Limit access to get item operation only if the logged user is one of:
         // - have ROLE_ADMIN
         'security' => '
-            is_granted("ROLE_ADMIN")
+            is_granted("ROLE_ADMIN")  
+            or  
+            is_granted("ROLE_STATS")
         ',
     ],
 ],
@@ -24,7 +26,7 @@ itemOperations: [
     // Limit access to get item operation only if the logged user is one of:
     // - have ROLE_ADMIN
     'security' => '
-        is_granted("ROLE_ADMIN")
+        is_granted("ROLE_ADMIN")  or  is_granted("ROLE_STATS")
     ',
     ],
 ],
@@ -37,6 +39,13 @@ class Brand
     private ?int $id = null;
 
     #[ORM\Column(length: 50)]
+    #[
+        Assert\NotBlank,
+        Assert\Length([
+            'min' => 2,
+            'max' => 50,
+        ]),
+    ]
     private ?string $label = null;
 
     #[ORM\OneToMany(mappedBy: 'brand', targetEntity: Product::class)]
