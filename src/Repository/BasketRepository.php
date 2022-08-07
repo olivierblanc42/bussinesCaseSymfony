@@ -44,32 +44,59 @@ class BasketRepository extends ServiceEntityRepository
         }
     }
 
-    public function getTotalcommande()
+
+    // get the number of command
+    public function getTotalcommande(?\DateTime $startDate = null, ?\DateTime $endDate = null): array
     {
+
+        if ($startDate === null || $endDate === null) {
+            $endDate = new \DateTime('now');
+            $startDate = new \DateTime('2020-01-01');
+        }
+
         return $this->createQueryBuilder('basket')
             ->select('count(basket)')
             ->join('basket.commandStatus', 'commandStatus')
             ->where('commandStatus.label = :valid')
             ->setParameter('valid', 'valide')
+            ->andWhere('basket.dateCreated BETWEEN :startDate AND :endDate')
+            ->setParameter('startDate', $startDate)
+            ->setParameter('endDate', $endDate)
             ->getQuery()
-            ->getResult();
+            ->getOneOrNullResult();
     }
 
-    public function getBasketAverageValue()
+
+    // the average price of basket
+    public function getBasketAverageValue(?\DateTime $startDate = null, ?\DateTime $endDate = null): array
     {
+        if ($startDate === null || $endDate === null) {
+            $endDate = new \DateTime('now');
+            $startDate = new \DateTime('2020-01-01');
+        }
+
+
         return $this->createQueryBuilder('basket')
             ->select('AVG(basketQuantityInBasket.price)')
             ->join('basket.basketQuantityInBasket', 'basketQuantityInBasket')
+            ->andWhere('basket.dateCreated BETWEEN :startDate AND :endDate')
+            ->setParameter('startDate', $startDate)
+            ->setParameter('endDate', $endDate)
             ->getQuery()
-            ->getResult();
+            ->getOneOrNullResult();
     }
 
 
 
+   // count the total sale of the site
 
-
-    public function getSales()
+    public function getSales(?\DateTime $startDate = null, ?\DateTime $endDate = null): array
     {
+
+        if ($startDate === null || $endDate === null) {
+            $endDate = new \DateTime('now');
+            $startDate = new \DateTime('2020-01-01');
+        }
         return $this->createQueryBuilder('basket')
             ->select('commandStatus', 'SUM(basketQuantityInBasket.price)', 'basket')
             ->join('basket.commandStatus', 'commandStatus')
@@ -77,29 +104,53 @@ class BasketRepository extends ServiceEntityRepository
             ->groupBy('basketQuantityInBasket.price')
             ->where('commandStatus.label = :valid')
             ->setParameter('valid', 'valide')
+            ->andWhere('basket.dateCreated BETWEEN :startDate AND :endDate')
+            ->setParameter('startDate', $startDate)
+            ->setParameter('endDate', $endDate)
             ->getQuery()
-            ->getResult();
+            ->getOneOrNullResult();
+
     }
 
-    public function getBasketCanceled()
+
+    //count the number of basket canceled
+    public function getBasketCanceled(?\DateTime $startDate = null, ?\DateTime $endDate = null): array
     {
+        if ($startDate === null || $endDate === null) {
+            $endDate = new \DateTime('now');
+            $startDate = new \DateTime('2020-01-01');
+        }
+
+
         return $this->createQueryBuilder('basket')
             ->select('count(basket)')
             ->join('basket.commandStatus', 'commandStatus')
             ->where('commandStatus.label = :annul')
             ->setParameter('annul', 'Annuler')
+            ->andWhere('basket.dateCreated BETWEEN :startDate AND :endDate')
+            ->setParameter('startDate', $startDate)
+            ->setParameter('endDate', $endDate)
             ->getQuery()
-            ->getResult();
+            ->getOneOrNullResult();
     }
 
+    // count the number of basket
 
-    public function getNumberBasket(): array
+    public function getNumberBasket(?\DateTime $startDate = null, ?\DateTime $endDate = null): array
     {
+
+        if ($startDate === null || $endDate === null) {
+            $endDate = new \DateTime('now');
+            $startDate = new \DateTime('2020-01-01');
+        }
         // SELECT * FROM game AS game
         return $this->createQueryBuilder('basket')
             ->select('Count(basket)')
+            ->andWhere('basket.dateCreated BETWEEN :startDate AND :endDate')
+            ->setParameter('startDate', $startDate)
+            ->setParameter('endDate', $endDate)
             ->getQuery()
-            ->getResult();
+            ->getOneOrNullResult();
     }
 
 

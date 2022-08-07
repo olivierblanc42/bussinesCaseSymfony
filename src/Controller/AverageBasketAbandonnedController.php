@@ -3,6 +3,7 @@
 namespace App\Controller;
 
 use App\Repository\BasketRepository;
+use Doctrine\ORM\NonUniqueResultException;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Response;
@@ -18,6 +19,9 @@ class AverageBasketAbandonnedController extends AbstractController
 
     }
 
+    /**
+     * @throws NonUniqueResultException
+     */
     public function __invoke(): JsonResponse
     {
         $sale = $this->basketRepository->getBasketPercentageAbandoned();

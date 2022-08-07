@@ -22,7 +22,7 @@ class BasketCanceledController extends AbstractController
     {
 
         $baskets = $this->basketRepository->getBasketCanceled();
-        return new JsonResponse(json_encode(['data' => $baskets]));
+        return new JsonResponse( $baskets);
     }
 
 

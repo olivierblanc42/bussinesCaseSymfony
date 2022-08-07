@@ -40,7 +40,7 @@ class NumberVisiteRepository extends ServiceEntityRepository
         }
     }
 
-
+// number of visit for
     public function getVisitBasket(): array
     {
         return $this->createQueryBuilder('number_visite')
@@ -51,6 +51,7 @@ class NumberVisiteRepository extends ServiceEntityRepository
 
     }
 
+    //
     public function getNewVisit(): array
     {
         return $this->createQueryBuilder('number_visite')

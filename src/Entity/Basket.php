@@ -4,7 +4,7 @@ namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
 use App\Controller\AverageBasketPriceController;
-use App\Controller\BasketConvertionController;
+use App\Controller\BasketNewClientConvertionController;
 use App\Controller\BasketCanceledController;
 use App\Controller\BasketincommandController;
 use App\Controller\NumberOfBasketController;
@@ -83,7 +83,7 @@ use Doctrine\ORM\Mapping as ORM;
             'security' => ' is_granted("ROLE_STATS")',
             'method' => 'GET',
             'path' => '/stats/conversion_basket_client',
-            'controller' => BasketConvertionController::class,
+            'controller' => BasketNewClientConvertionController::class,
         ],
         'get_recurance' => [
             // Limit access to get item operation only if the logged user is one of:

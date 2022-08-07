@@ -40,15 +40,22 @@ class ProductRepository extends ServiceEntityRepository
     }
 
 
-    public function getBestProducts()
+    public function getBestProducts(?\DateTime $startDate = null, ?\DateTime $endDate = null): array
     {
 
+        if ($startDate === null || $endDate === null) {
+            $endDate = new \DateTime('now');
+            $startDate = new \DateTime('2020-01-01');
+        }
 
         // SELECT * FROM user AS user
         return $this->createQueryBuilder('product')
-            ->select('product.label','quantityInBaskets.quantity')
-            ->join('product.quantityInBaskets','quantityInBaskets')
-            ->orderBy('quantityInBaskets.quantity','DESC')
+            ->select('product.label', 'quantityInBaskets.quantity')
+            ->join('product.quantityInBaskets', 'quantityInBaskets')
+            ->orderBy('quantityInBaskets.quantity', 'DESC')
+            ->andWhere('basket.dateCreated BETWEEN :startDate AND :endDate')
+            ->setParameter('startDate', $startDate)
+            ->setParameter('endDate', $endDate)
             ->getQuery()
             ->getResult();
     }

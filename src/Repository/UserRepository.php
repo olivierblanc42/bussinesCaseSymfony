@@ -57,16 +57,31 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
     }
 
 
-    public function getNumberOfUser(): array
+    public function getNumberOfUser(?\DateTime $startDate = null, ?\DateTime $endDate = null): array
     {
+
+        if ($startDate === null || $endDate === null) {
+            $endDate = new \DateTime('now');
+            $startDate = new \DateTime('2020-01-01');
+        }
+
         return $this->createQueryBuilder('user')
             ->select('COUNT(user)')
+            ->andWhere('user.registrationDate BETWEEN :startDate AND :endDate')
+            ->setParameter('startDate', $startDate)
+            ->setParameter('endDate', $endDate)
             ->getQuery()
             ->getResult();
     }
 
-    public function getNewClient()
+    public function getNewClient(?\DateTime $startDate = null, ?\DateTime $endDate = null): array
     {
+        if ($startDate === null || $endDate === null) {
+            $endDate = new \DateTime('now');
+            $startDate = new \DateTime('2020-01-01');
+        }
+
+
         $date = new \DateTime('first day of this month');
         $date = date('Y-m-d', strtotime($date->format('Y-m-d')));
 
@@ -75,6 +90,9 @@ class UserRepository extends ServiceEntityRepository implements PasswordUpgrader
             ->select('COUNT(user)')
             ->where('user.registrationDate >= :date')
             ->setParameter('date', $date)
+            ->andWhere('user.registrationDate BETWEEN :startDate AND :endDate')
+            ->setParameter('startDate', $startDate)
+            ->setParameter('endDate', $endDate)
             ->getQuery()
             ->getResult();
     }
