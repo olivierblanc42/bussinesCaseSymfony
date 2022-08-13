@@ -1,0 +1,37 @@
+{% extends 'back/base.html.twig' %}
+
+{% block title %}Edit Species{% endblock %}
+
+
+
+{% block body %}
+    <h1>Species index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for species in species %}
+            <tr>
+                <td>{{ species.name }}</td>
+                <td>
+                    <a href="{{ path('app_back_species_show', {'id': species.id}) }}">show</a>
+                    <a href="{{ path('app_back_species_edit', {'id': species.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="navigation d-flex justify-content-center mt-2">
+        {{ knp_pagination_render(species) }}
+    </div>
+    <a href="{{ path('app_back_species_new') }}">Create new</a>
+{% endblock %}

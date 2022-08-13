@@ -1,0 +1,40 @@
+
+{% extends 'back/base.html.twig' %}
+
+{% block title %}MeansOfPayment index {% endblock %}
+
+
+
+{% block body %}
+    <h1>MeansOfPayment index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Label</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for means_of_payment in means_of_payments %}
+            <tr>
+                <td>{{ means_of_payment.id }}</td>
+                <td>{{ means_of_payment.label }}</td>
+                <td>
+                    <a href="{{ path('app_back_means_of_payment_show', {'id': means_of_payment.id}) }}">show</a>
+                    <a href="{{ path('app_back_means_of_payment_edit', {'id': means_of_payment.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="navigation d-flex justify-content-center mt-2">
+        {{ knp_pagination_render(means_of_payments) }}
+    </div>
+    <a href="{{ path('app_back_means_of_payment_new') }}">Create new</a>
+{% endblock %}

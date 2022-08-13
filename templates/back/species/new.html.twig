@@ -1,0 +1,13 @@
+{% extends 'back/base.html.twig' %}
+
+{% block title %}Edit Species{% endblock %}
+
+
+
+{% block body %}
+    <h1>Create new Species</h1>
+
+    {{ include('back/species/_form.html.twig') }}
+
+    <a href="{{ path('app_back_species_index') }}">back to list</a>
+{% endblock %}

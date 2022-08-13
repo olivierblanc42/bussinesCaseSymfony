@@ -1,0 +1,29 @@
+
+
+{% extends 'back/base.html.twig' %}
+
+{% block title %}MeansOfPayment<{% endblock %}
+
+
+{% block body %}
+    <h1>MeansOfPayment</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ means_of_payment.id }}</td>
+            </tr>
+            <tr>
+                <th>Label</th>
+                <td>{{ means_of_payment.label }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_back_means_of_payment_index') }}">back to list</a>
+
+    <a href="{{ path('app_back_means_of_payment_edit', {'id': means_of_payment.id}) }}">edit</a>
+
+    {{ include('back/means_of_payment/_delete_form.html.twig') }}
+{% endblock %}

@@ -4,11 +4,10 @@ namespace App\Entity;
 
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use Symfony\Component\Validator\Constraints as Assert;
-use App\Controller\TotalSalesController;
 use App\Repository\QuantityInBasketRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: QuantityInBasketRepository::class)]
 #[ApiResource(

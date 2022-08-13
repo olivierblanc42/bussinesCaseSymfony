@@ -1,0 +1,16 @@
+
+{% extends 'back/base.html.twig' %}
+
+{% block title %}Edit MeansOfPayment {% endblock %}
+
+
+
+{% block body %}
+    <h1>Edit MeansOfPayment</h1>
+
+    {{ include('back/means_of_payment/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('app_back_means_of_payment_index') }}">back to list</a>
+
+    {{ include('back/means_of_payment/_delete_form.html.twig') }}
+{% endblock %}

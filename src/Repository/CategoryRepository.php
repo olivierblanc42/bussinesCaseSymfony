@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Category;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -14,7 +15,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Category[]    findAll()
  * @method Category[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CategoryRepository extends ServiceEntityRepository
+class CategoryRepository extends AbstractBusinessCaseRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -38,6 +39,14 @@ class CategoryRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+    public function getQbAll(): QueryBuilder
+    {
+        $qb = parent::getQbAll();
+        return $qb->select('category')
+            ;
+    }
+
 
 //    /**
 //     * @return Category[] Returns an array of Category objects

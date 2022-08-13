@@ -1,0 +1,101 @@
+footer {
+
+    div {
+        margin-top: 0.5rem;
+    }
+
+    .container-flex {
+        padding: 0;
+    }
+
+    >div {
+
+        width: 400px;
+
+    }
+
+
+
+    .btn {
+        align-items: center;
+        background-color: $bg-yellow;
+        padding: $padding-s;
+
+        img {
+
+            display: block;
+            width: 20px;
+            height: 20px;
+            margin-right: 10px;
+
+
+        }
+    }
+
+    hr {
+        height: 10px;
+        width: 100%;
+    }
+
+    .search-form {
+        position: relative;
+        height: 32px;
+        width: 300px;
+        border: 1px solid;
+        border-radius: 3px;
+        border: 1px solid white;
+
+        input[type="text"] {
+            display: inline-block;
+            position: absolute;
+            padding: 2px 64px 2px 12px;
+            height: 32px;
+            width: 300px;
+            background: transparent;
+            border: none;
+            box-sizing: border-box;
+            margin: 0;
+
+            input[type="text"]:focus {
+                border: none;
+                outline: var(--grey);
+                box-shadow: var(--box-shadow);
+            }
+        }
+
+        input[type="submit"] {
+            display: inline-block;
+            height: 16px;
+            width: 16px;
+            padding: $padding-s;
+            background-image: url('../../../img/svg/autre/search.svg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            background-color: transparent;
+            border: none;
+            position: absolute;
+            right: 0;
+            top: 0;
+            cursor: pointer;
+
+        }
+
+        input[type="text"]:focus {
+            border: none;
+            outline: var(--grey);
+            box-shadow: var(--box-shadow);
+        }
+    }
+
+    .coyright {
+        text-align: center;
+    }
+
+    @media screen and (min-width: 1024px) {
+
+    }
+
+
+
+}

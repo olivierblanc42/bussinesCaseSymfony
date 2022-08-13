@@ -20,15 +20,18 @@ Encore
      * Each entry will result in one JavaScript file (e.g. app.js)
      * and one CSS file (e.g. app.css) if your JavaScript imports CSS.
      */
-    .addEntry('script', './assets/script/index.ts')
-    .addStyleEntry('style', './assets/style/index.scss')
+    .addEntry('front_scripts', './assets/front/scripts/main.ts')
+    .addStyleEntry('front_styles', './assets/front/styles/main.scss')
+
+    .addEntry('back_scripts', './assets/back/scripts/main.ts')
+    .addStyleEntry('back_styles', './assets/back/styles/main.scss')
 
 
 
     // When enabled, Webpack "splits" your files into smaller pieces for greater optimization.
     .splitEntryChunks()
 
-    // will require an extra script tag for runtime.js
+    // will require an extra scripts tag for runtime.js
     // but, you probably want this, unless you're building a single-page app
     .enableSingleRuntimeChunk()
 
@@ -64,7 +67,7 @@ Encore
     // uncomment if you use React
     //.enableReactPreset()
 
-    // uncomment to get integrity="..." attributes on your script & link tags
+    // uncomment to get integrity="..." attributes on your scripts & link tags
     // requires WebpackEncoreBundle 1.4 or higher
     //.enableIntegrityHashes(Encore.isProduction())
 

@@ -3,8 +3,8 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Controller\CountUserController;
-use App\Controller\NewUsersController;
+use App\Controller\Statistic\CountUserController;
+use App\Controller\Statistic\NewUsersController;
 use App\Repository\UserRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;

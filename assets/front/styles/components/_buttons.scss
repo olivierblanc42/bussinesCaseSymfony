@@ -1,0 +1,112 @@
+.btn {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    text-align: center;
+    >div {
+        align-items: center;
+        order: 2;
+        p {
+            display: none;
+            margin-bottom: 0;
+        }
+    }
+    img {
+        display: block;
+    }
+}
+
+.btn-yellow {
+    background-color: transparent;
+    border-radius: 10px;
+}
+
+
+@media screen and (min-width: 1024px) {
+    .btn {
+        display: flex;
+        flex-direction: row;
+        width: fit-content;
+        padding: $padding-m;
+        text-align: left;
+
+        >div {
+            line-height: .7rem;
+            text-align: center;
+
+            p {
+                display: block;
+                margin-bottom: 0;
+            }
+        }
+
+        >img {
+            display: none;
+
+        }
+
+        
+    }
+
+    .btn-yellow {
+        background-color: $bg-yellow;
+        border-radius: 10px;
+        margin-left: 150px;
+    }
+}
+
+
+
+.btn-banner {
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    background-color: $bg-yellow;
+    margin: 0%;
+    text-align: center;
+    padding: $padding-s;
+    font-size: 9px;
+
+    p {
+        margin-bottom: 0;
+
+
+    }
+    @media (min-width: 1024px){
+        font-size: 16px; 
+    }
+}
+
+
+.btn-footer {
+
+    
+        outline: none;
+        text-decoration: none;
+        display: inline-block;
+        text-align: center;
+        line-height: 3;
+        color: white;
+        border: 1px solid white;
+        border-radius: 10px; 
+        padding: 2px 4px;
+        text-transform: uppercase;
+
+}
+
+
+.btn-card{
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    background-color: $bg-yellow;
+    margin: 0%;
+    text-align: center;
+    font-family: $font-banner;
+    padding: $padding-l;
+    font-size: 18px;
+}
+
+// .btn-card:hover {
+
+//   }

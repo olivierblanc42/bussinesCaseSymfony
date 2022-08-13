@@ -1,0 +1,44 @@
+{% extends 'back/base.html.twig' %}
+
+{% block title %}Product index{% endblock %}
+
+{% block body %}
+    <h1>Product index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Label</th>
+                <th>Description</th>
+                <th>QuantityInStock</th>
+                <th>IsActive</th>
+                <th>PriceHt</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for product in products %}
+            <tr>
+                <td>{{ product.label }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.quantityInStock }}</td>
+                <td>{{ product.isActive ? 'Yes' : 'No' }}</td>
+                <td>{{ product.priceHt }}</td>
+                <td>
+                    <a href="{{ path('app_back_product_show', {'id': product.id}) }}">show</a>
+                    <a href="{{ path('app_back_product_edit', {'id': product.id}) }}">edit</a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="7">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="navigation d-flex justify-content-center mt-2">
+        {{ knp_pagination_render(products) }}
+    </div>
+    <a href="{{ path('app_back_product_new') }}">Create new</a>
+{% endblock %}

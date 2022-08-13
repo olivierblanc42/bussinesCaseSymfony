@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\MeansOfPayment;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -14,7 +15,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method MeansOfPayment[]    findAll()
  * @method MeansOfPayment[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class MeansOfPaymentRepository extends ServiceEntityRepository
+class MeansOfPaymentRepository extends AbstractBusinessCaseRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -38,6 +39,14 @@ class MeansOfPaymentRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+
+    public function getQbAll(): QueryBuilder
+    {
+        $qb = parent::getQbAll();
+        return $qb->select('meansofpayment')
+            ;
+    }
+
 
 //    /**
 //     * @return MeansOfPayment[] Returns an array of MeansOfPayment objects

@@ -3,15 +3,15 @@
 namespace App\Entity;
 
 use ApiPlatform\Core\Annotation\ApiResource;
-use App\Controller\AverageBasketPriceController;
-use App\Controller\BasketNewClientConvertionController;
-use App\Controller\BasketCanceledController;
-use App\Controller\BasketincommandController;
-use App\Controller\NumberOfBasketController;
-use App\Controller\RecurciveController;
-use App\Controller\TotalOfCommandController;
-use App\Controller\TotalSalesController;
-use App\Controller\AverageBasketAbandonnedController;
+use App\Controller\Statistic\AverageBasketAbandonnedController;
+use App\Controller\Statistic\AverageBasketPriceController;
+use App\Controller\Statistic\BasketCanceledController;
+use App\Controller\Statistic\BasketincommandController;
+use App\Controller\Statistic\BasketNewClientConvertionController;
+use App\Controller\Statistic\NumberOfBasketController;
+use App\Controller\Statistic\RecurciveController;
+use App\Controller\Statistic\TotalOfCommandController;
+use App\Controller\Statistic\TotalSalesController;
 use App\Repository\BasketRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
