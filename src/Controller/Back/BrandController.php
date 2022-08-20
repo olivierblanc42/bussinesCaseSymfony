@@ -4,6 +4,7 @@ namespace App\Controller\Back;
 
 use App\Entity\Brand;
 use App\Form\BrandType;
+use App\Form\Filter\BrandFilterType;
 use App\Repository\BrandRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Lexik\Bundle\FormFilterBundle\Filter\FilterBuilderUpdaterInterface;
@@ -27,6 +28,19 @@ class BrandController extends AbstractController
     {
 
         $qb = $brandRepository->getQbAll();
+
+        $filterForm = $this->createForm(BrandFilterType::class, null, [
+            'method' => 'GET',
+        ]);
+
+        if ($request->query->has($filterForm->getName())) {
+            $filterForm->submit($request->query->get($filterForm->getName()));
+            $builderUpdater->addFilterConditions($filterForm, $qb);
+        }
+
+
+
+
         $brand = $paginator->paginate(
             $qb,
             $request->query->getInt('page', 1),
@@ -34,6 +48,7 @@ class BrandController extends AbstractController
         );
         return $this->render('back/brand/index.html.twig', [
             'brands' => $brand,
+            'filters' => $filterForm->createView(),
         ]);
     }
 

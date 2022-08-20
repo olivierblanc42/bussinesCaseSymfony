@@ -102,7 +102,8 @@ class UserRepository extends AbstractBusinessCaseRepository implements PasswordU
     public function getQbAll(): QueryBuilder
     {
         $qb = parent::getQbAll();
-        return $qb->select('user')
+        return $qb->select('user','gender')
+            ->join('user.gender','gender')
             ;
     }
 //    /**

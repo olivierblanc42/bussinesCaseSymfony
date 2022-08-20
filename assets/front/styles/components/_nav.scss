@@ -10,7 +10,7 @@
     }
 
     .menu {
-        display: inline-block;
+        display: block;
         width: 33px;
         height: 30px;
         background-image: url("../../../img/svg/autre/menu.svg");
@@ -24,7 +24,7 @@
         }
     }
 
-    .backet {
+    .basket {
         display: inline-block;
         width: 33px;
         height: 30px;
@@ -76,7 +76,7 @@ display: none;
 
     .nav-menu {
         width: 20%;
- padding-right: 50px;
+        padding-right: 50px;
         .menu {
             display: inline-block;
             background-image: url("../../../img/svg/autre/menu.svg");
@@ -91,9 +91,6 @@ display: none;
 
 
     .nav-icon {
-        width: 60%;
-
-
 
         a {
             display: inline-block;
@@ -140,10 +137,6 @@ display: none;
 
 
     .nav-utils {
-        width: 20%;
-        padding-left: 50px;
-        padding-right: 125px;
-        
 
         .favorite {
             display: inline-block;
@@ -156,7 +149,7 @@ display: none;
         }
     }
 
-    .backet {
+    .basket{
         display: inline-block;
         background-image: url("../../../img/svg/autre/backet.svg");
         background-repeat: no-repeat;
@@ -167,8 +160,5 @@ display: none;
  
 
     }
-
-  
-
 
 }

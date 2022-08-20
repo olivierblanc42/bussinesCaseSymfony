@@ -1,0 +1,48 @@
+{% extends 'front/base.html.twig' %}
+
+{% block body %}
+
+    <div class="container user-account my-5 py-2">
+
+        <p class="text-end">La Nîmes'alerie</p>
+        <h2 class="" href="#"  > Mon compte </h2>
+        <div class="row justify-content-center my-5">
+
+
+            <a class="col-2 mx-1 card-utils" href="{{ path('app_detail_user') }}" >
+                <div class="container-img">
+                </div>
+
+                <div class="card-text">
+                    <p>Détail du compte </p>
+                </div>
+
+            </a>
+            <a class="col-2 mx-1 card-utils" href="{{ path('app_order_user') }}" >
+                <div class="container-img">
+                </div>
+
+                <div class="card-text">
+                    <p>Mes commandes </p>
+                </div>
+            </a>
+            <a class="col-2  mx-1 card-utils " href="{{ path('app_address_user') }}">
+                <div class="container-img">
+                </div>
+
+                <div class="card-text">
+                    <p>Adresses</p>
+                </div>
+            </a>
+            <a class="col-2  mx-1 card-utils ">
+                <div class="container-img">
+                </div>
+
+                <div class="card-text">
+                    <p>Déconnexion </p>
+                </div>
+            </a>
+        </div>
+        <p>Bonjour <a href=""><span class="display-green"> nom du client</span></a> (Vous n'êtes pas <a href=""><span class="display-green"> nom du client</span></a> ?) Déconnexion </p>
+    </div>
+{% endblock %}

@@ -3,6 +3,7 @@
 namespace App\Controller\Back;
 
 use App\Entity\Species;
+use App\Form\Filter\BasketFilterType;
 use App\Form\Species1Type;
 use App\Repository\SpeciesRepository;
 use Knp\Component\Pager\PaginatorInterface;
@@ -24,6 +25,15 @@ class SpeciesController extends AbstractController
     ): Response
     {
         $qb = $speciesRepository->getQbAll();
+
+        $filterForm = $this->createForm(BasketFilterType::class, null, [
+            'method' => 'GET',
+        ]);
+
+        if ($request->query->has($filterForm->getName())) {
+            $filterForm->submit($request->query->get($filterForm->getName()));
+            $builderUpdater->addFilterConditions($filterForm, $qb);
+        }
         $species = $paginator->paginate(
             $qb,
             $request->query->getInt('page', 1),
@@ -33,6 +43,7 @@ class SpeciesController extends AbstractController
 
         return $this->render('back/species/index.html.twig', [
             'species' => $species ,
+            'filters' => $filterForm->createView(),
         ]);
     }
 

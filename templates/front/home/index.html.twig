@@ -1,0 +1,58 @@
+{% extends 'front/base.html.twig' %}
+
+{% block title %}{% endblock %}
+
+{% block body %}
+
+    {% include 'front/partials/banner.html.twig' %}
+
+
+
+    <div class="container">
+        <div class="d-flex justify-content-between">
+            <h2  class="mt-3 mb-4">Nos Meilleurs<span class="span-green"> Produits </span></h2>
+        </div>
+        <div class="row  ">
+            {% for productIteration in products %}
+                <div class="col-lg-4 col-md-12">
+                    {% include 'front/partials/cardProduct.html.twig' with {
+                        'product': productIteration
+                    } %}
+                </div>
+            {% endfor %}
+
+        </div>
+    </div>
+    <a class="btn btn-primary mx-auto ">voir nos produits</a>
+
+
+
+    <div class="container">
+        <div class="d-flex justify-content-between">
+            <h2  class="mt-3 mb-4">Notre selection pour<span class="span-green"> Vous </span></h2>
+        </div>
+        <div class="row  ">
+            {% for productIteration in products %}
+                <div class="col-lg-4 col-md-12">
+                    {% include 'front/partials/cardProduct.html.twig' with {
+                        'product': productIteration
+                    } %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    <a class="btn btn-primary mx-auto" href="{{ path('user_best_product')}}"   >voir nos produits</a>
+
+
+    <div class="container">
+        <div class="d-flex justify-content-between">
+            <h2  class="mt-3 mb-4">Ils nous ont <span class="span-green"> fait confiance </span></h2>
+        </div>
+        <div class="row  ">
+        </div>
+
+    </div>
+
+    {% include 'front/partials/cardClients.html.twig'%}
+
+{% endblock %}

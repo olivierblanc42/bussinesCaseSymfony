@@ -134,7 +134,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: Types::DATETIME_MUTABLE)]
     private ?\DateTimeInterface $registrationDate = null;
 
-    #[ORM\ManyToOne(inversedBy: 'User')]
+    #[ORM\ManyToOne(inversedBy: 'user')]
     private ?Gender $gender = null;
 
     #[ORM\OneToOne(mappedBy: 'user', cascade: ['persist', 'remove'])]

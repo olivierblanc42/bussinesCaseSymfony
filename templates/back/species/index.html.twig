@@ -10,7 +10,13 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Name</th>
+                <th>                 {{
+                    knp_pagination_sortable(
+                        species,
+                        'Nom',
+                        'species.name'
+                    )|raw
+                    }}</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -19,8 +25,12 @@
             <tr>
                 <td>{{ species.name }}</td>
                 <td>
-                    <a href="{{ path('app_back_species_show', {'id': species.id}) }}">show</a>
-                    <a href="{{ path('app_back_species_edit', {'id': species.id}) }}">edit</a>
+                    <a href="{{ path('app_back_species_show', {'id': species.id}) }}">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </a>
+                    <a href="{{ path('app_back_species_edit', {'id': species.id}) }}">
+                        <i class="fa-solid fa-pen"></i>
+                    </a>
                 </td>
             </tr>
         {% else %}

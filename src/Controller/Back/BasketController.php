@@ -4,7 +4,11 @@ namespace App\Controller\Back;
 
 use App\Entity\Basket;
 use App\Form\BasketType;
+use App\Form\Filter\BasketFilterType;
+use App\Form\Filter\UserFilterType;
 use App\Repository\BasketRepository;
+use Knp\Component\Pager\PaginatorInterface;
+use Lexik\Bundle\FormFilterBundle\Filter\FilterBuilderUpdaterInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -14,10 +18,35 @@ use Symfony\Component\Routing\Annotation\Route;
 class BasketController extends AbstractController
 {
     #[Route('/', name: 'app_admin_basket_index', methods: ['GET'])]
-    public function index(BasketRepository $basketRepository): Response
+    public function index(
+        BasketRepository $basketRepository,
+        PaginatorInterface $paginator,
+        FilterBuilderUpdaterInterface $builderUpdater,
+        Request $request
+    ): Response
     {
+
+
+        $qb = $basketRepository->getQbAll();
+
+
+        $filterForm = $this->createForm(BasketFilterType::class, null, [
+            'method' => 'GET',
+        ]);
+
+        if ($request->query->has($filterForm->getName())) {
+            $filterForm->submit($request->query->get($filterForm->getName()));
+            $builderUpdater->addFilterConditions($filterForm, $qb);
+        }
+        $baskets = $paginator->paginate(
+            $qb,
+            $request->query->getInt('page', 1),
+            15
+        );
         return $this->render('back/basket/index.html.twig', [
-            'baskets' => $basketRepository->findAll(),
+            'baskets' => $baskets,
+            'filters' => $filterForm->createView(),
+
         ]);
     }
 

@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Picture;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
@@ -14,7 +15,7 @@ use Doctrine\Persistence\ManagerRegistry;
  * @method Picture[]    findAll()
  * @method Picture[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class PictureRepository extends ServiceEntityRepository
+class PictureRepository extends AbstractBusinessCaseRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -37,6 +38,13 @@ class PictureRepository extends ServiceEntityRepository
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+    }
+    public function getQbAll(): QueryBuilder
+    {
+        $qb = parent::getQbAll();
+        return $qb->select('picture','product')
+            ->join('picture.product ','product ')
+            ;
     }
 
 //    /**

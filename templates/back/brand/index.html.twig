@@ -8,7 +8,14 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Label</th>
+                <th>         {{
+                    knp_pagination_sortable(
+                        brands,
+                        'Nom',
+                        'brand.label'
+                    )|raw
+                    }}</th>
+                <th>Nombre de produits</th>
                 <th>actions</th>
             </tr>
         </thead>
@@ -17,9 +24,14 @@
             <tr>
 
                 <td>{{ brand.label }}</td>
+                <td></td>
                 <td>
-                    <a href="{{ path('app_back_brand_show', {'id': brand.id}) }}">show</a>
-                    <a href="{{ path('app_back_brand_edit', {'id': brand.id}) }}">edit</a>
+                    <a href="{{ path('app_back_brand_show', {'id': brand.id}) }}">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </a>
+                    <a href="{{ path('app_back_brand_edit', {'id': brand.id}) }}">
+                        <i class="fa-solid fa-pen"></i>
+                    </a>
                 </td>
             </tr>
         {% else %}

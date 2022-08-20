@@ -4,10 +4,13 @@ namespace App\Form;
 
 use App\Entity\Brand;
 use App\Entity\Category;
+use App\Entity\Picture;
 use App\Entity\Product;
 use App\Entity\Species;
+use Doctrine\ORM\EntityRepository;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
+use Symfony\Component\Form\Extension\Core\Type\CollectionType;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -40,12 +43,15 @@ class ProductType extends AbstractType
                     'min' => 0
                 ],
             ])
-            ->add('brand',EntityType::class,[
-                'label' => 'Marque',
-                'required' => true,
-                'class'=> Brand::class,
+            ->add('brand', EntityType::class, [
+                'required' => false,
+                'class' => Brand::class,
                 'choice_label' => 'label',
-
+                'query_builder' => function (EntityRepository $er) {
+                    return $er->createQueryBuilder('b')
+                        ->orderBy('b.label', 'ASC')
+                        ;
+                }
             ])
             ->add('species',EntityType::class,[
                     'label'=>'Espèce',
@@ -55,12 +61,13 @@ class ProductType extends AbstractType
 
             ])
             ->add('category',EntityType::class,[
-                'label'=> 'Catégorie',
+                'label'=>'Categories',
                 'required' => true,
                 'class'=> Category::class,
                 'choice_label' => 'label',
 
             ])
+
         ;
     }
 

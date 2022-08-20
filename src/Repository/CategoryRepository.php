@@ -44,6 +44,7 @@ class CategoryRepository extends AbstractBusinessCaseRepository
     {
         $qb = parent::getQbAll();
         return $qb->select('category')
+
             ;
     }
 

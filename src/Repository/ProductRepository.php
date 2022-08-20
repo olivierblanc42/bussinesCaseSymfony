@@ -64,8 +64,21 @@ class ProductRepository extends AbstractBusinessCaseRepository
     public function getQbAll(): QueryBuilder
     {
         $qb = parent::getQbAll();
-        return $qb->select('product')
+        return $qb->select('product','brand')
+            ->join('product.review','productReview')
+            ->join('product.brand','brand')
             ;
+    }
+
+
+    public function  getBestReview(){
+        return $this->createQueryBuilder('product')
+            ->select('product.label','AVG(productReview.note)','product.priceHt','productReview.note','COUNT(productReview.note)')
+            ->join('product.review','productReview')
+            ->groupBy('productReview.note')
+            ->orderBy('AVG(productReview.note)', 'Desc')
+            ->getQuery()
+            ->getResult();
     }
 
 //    /**

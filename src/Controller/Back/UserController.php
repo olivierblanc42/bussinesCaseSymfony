@@ -3,6 +3,7 @@
 namespace App\Controller\Back;
 
 use App\Entity\User;
+use App\Form\Filter\UserFilterType;
 use App\Form\UserType;
 use App\Repository\UserRepository;
 use Knp\Component\Pager\PaginatorInterface;
@@ -18,12 +19,22 @@ class UserController extends AbstractController
     #[Route('/', name: 'app_back_user_index', methods: ['GET'])]
     public function index(
         UserRepository $userRepository,
-    PaginatorInterface $paginator,
+        PaginatorInterface $paginator,
         FilterBuilderUpdaterInterface $builderUpdater,
         Request $request
     ): Response
     {
         $qb = $userRepository->getQbAll();
+
+
+        $filterForm = $this->createForm(UserFilterType::class, null, [
+            'method' => 'GET',
+        ]);
+
+        if ($request->query->has($filterForm->getName())) {
+            $filterForm->submit($request->query->get($filterForm->getName()));
+            $builderUpdater->addFilterConditions($filterForm, $qb);
+        }
         $users = $paginator->paginate(
             $qb,
             $request->query->getInt('page', 1),
@@ -33,6 +44,7 @@ class UserController extends AbstractController
 
         return $this->render('back/user/index.html.twig', [
             'users' => $users,
+            'filters' => $filterForm->createView(),
         ]);
     }
 

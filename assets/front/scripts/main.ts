@@ -1,1 +1,3 @@
-import "bootstrap";
+
+import '../../shared/scripts/main';
+

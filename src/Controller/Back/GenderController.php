@@ -36,7 +36,7 @@ class GenderController extends AbstractController
 
         return $this->renderForm('back/gender/new.html.twig', [
             'gender' => $gender,
-            'form' => $form,
+            'form' => $form->createView(),
         ]);
     }
 

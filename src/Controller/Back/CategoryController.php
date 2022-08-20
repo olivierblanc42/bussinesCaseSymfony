@@ -4,6 +4,7 @@ namespace App\Controller\Back;
 
 use App\Entity\Category;
 use App\Form\CategoryType;
+use App\Form\Filter\CategoryFilterType;
 use App\Repository\CategoryRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Lexik\Bundle\FormFilterBundle\Filter\FilterBuilderUpdaterInterface;
@@ -24,6 +25,15 @@ class CategoryController extends AbstractController
     ): Response
     {
         $qb = $categoryRepository->getQbAll();
+        $filterForm = $this->createForm(CategoryFilterType::class, null, [
+            'method' => 'GET',
+        ]);
+
+        if ($request->query->has($filterForm->getName())) {
+            $filterForm->submit($request->query->get($filterForm->getName()));
+            $builderUpdater->addFilterConditions($filterForm, $qb);
+        }
+
         $category = $paginator->paginate(
             $qb,
             $request->query->getInt('page', 1),
@@ -33,6 +43,8 @@ class CategoryController extends AbstractController
 
         return $this->render('back/category/index.html.twig', [
             'categories' => $category,
+            'filters' => $filterForm->createView(),
+
         ]);
     }
 
@@ -51,7 +63,7 @@ class CategoryController extends AbstractController
 
         return $this->render('back/category/new.html.twig', [
             'category' => $category,
-            'form' => $form->createView(),
+            'form' => $form,
         ]);
     }
 

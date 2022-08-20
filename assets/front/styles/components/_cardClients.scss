@@ -1,0 +1,90 @@
+.cardClients {
+  width: 320px;
+  height: 320px;
+  margin-left: 10px;
+  box-shadow: rgba(0, 0, 0, 0.8) 0px 3px 7px ;
+  background-color: #f6f6f6;
+  text-align: center;
+  padding: 10px;
+  border-radius: 0.25rem;
+  
+  // le texte de la carte
+  >p {
+    margin-bottom: 25px;
+    margin-top: 15px;
+    font-size: 12px;
+    font-family: $font-banner;
+  }
+
+  >div>div {
+    margin-top: 10px;
+    margin-bottom: 5px;
+
+    :first-child {
+      padding-bottom: 5px;
+      margin-right: 5px;
+      width: 50px;
+      height: 50px;
+    }
+
+    :nth-child(2) {
+      display: none;
+
+    }
+
+    :last-child {
+      display: block;
+      margin-left: 5px;
+    }
+
+    p {
+      color: $bg-green;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    width: 550px;
+    height: 380px;
+    margin-left: 10px;
+    box-shadow: rgba(0, 0, 0, 0.8) 0px 3px 7px ;
+    background-color: #f6f6f6;
+    text-align: center;
+    padding: 10px;
+    border-radius: 0.25rem;
+
+    >p {
+      margin-bottom: 30px;
+      margin-top: 30px;
+      font-size: 18px;
+
+    }
+
+
+    >div>div {
+      margin-bottom: 5px;
+
+      :first-child {
+        padding-bottom: 5px;
+        margin-right: 10px;
+        width: 70px;
+        height: 70px;
+      }
+
+      :nth-child(2) {
+        display: block;
+      }
+
+      :last-child {
+        display: block;
+        margin-right: 0px;
+        margin-left: 10px;
+      }
+
+      p {
+        color: $bg-green;
+      }
+    }
+
+
+  }
+}

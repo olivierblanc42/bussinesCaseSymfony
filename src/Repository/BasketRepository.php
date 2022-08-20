@@ -8,6 +8,7 @@ use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\NoResultException;
 use Doctrine\ORM\Query\Expr\Join;
+use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 use phpDocumentor\Reflection\DocBlock\Tags\Return_;
 
@@ -19,7 +20,7 @@ use phpDocumentor\Reflection\DocBlock\Tags\Return_;
  * @method Basket[]    findAll()
  * @method Basket[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class BasketRepository extends ServiceEntityRepository
+class BasketRepository extends AbstractBusinessCaseRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
@@ -203,7 +204,9 @@ class BasketRepository extends ServiceEntityRepository
     }
 
 
-
+    /**
+     * @throws NonUniqueResultException
+     */
     public function getConvertingBaskets(): array
     {
         return $this->createQueryBuilder('basket')
@@ -226,8 +229,17 @@ class BasketRepository extends ServiceEntityRepository
             ->getResult();
     }
 
+    public function getQbAll(): QueryBuilder
+    {
+        $qb = parent::getQbAll();
+        return $qb->select('basket','address','commandStatus','meansOfPayment','user')
+            ->join('basket.address','address')
+            ->join('basket.user','user')
+            ->join('basket.commandStatus','commandStatus')
+            ->join('basket.meansOfPayment','meansOfPayment')
+            ;
 
-
+    }
 //    /**
 //     * @return Basket[] Returns an array of Basket objects
 //     */

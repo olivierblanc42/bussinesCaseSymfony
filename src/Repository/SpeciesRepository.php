@@ -44,6 +44,7 @@ class SpeciesRepository extends AbstractBusinessCaseRepository
     {
         $qb = parent::getQbAll();
         return $qb->select('species')
+
             ;
     }
 

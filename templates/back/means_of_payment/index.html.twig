@@ -11,19 +11,28 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Label</th>
+
+                <th>               {{
+                    knp_pagination_sortable(
+                        means_of_payments,
+                        'Nom',
+                        'meansofpayment.label'
+                    )|raw
+                    }}</th>
                 <th>actions</th>
             </tr>
         </thead>
         <tbody>
         {% for means_of_payment in means_of_payments %}
             <tr>
-                <td>{{ means_of_payment.id }}</td>
                 <td>{{ means_of_payment.label }}</td>
                 <td>
-                    <a href="{{ path('app_back_means_of_payment_show', {'id': means_of_payment.id}) }}">show</a>
-                    <a href="{{ path('app_back_means_of_payment_edit', {'id': means_of_payment.id}) }}">edit</a>
+                    <a href="{{ path('app_back_means_of_payment_show', {'id': means_of_payment.id}) }}">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </a>
+                    <a href="{{ path('app_back_means_of_payment_edit', {'id': means_of_payment.id}) }}">
+                        <i class="fa-solid fa-pen"></i>
+                    </a>
                 </td>
             </tr>
         {% else %}

@@ -31,9 +31,9 @@ product:
         minMessage: 'the number of characters is less than 2'
         maxMessage: 'the number of characters is less is greater than 300'
     priceHt:
-        LessThan: 'the number must be greater than 0'
+        GreaterThan: 'the number must be greater than 0'
     quantityInStock:
-        LessThan: 'the number must be greater than 0'
+        GreaterThan: 'the number must be greater than 0'
         
 picture:
     path:

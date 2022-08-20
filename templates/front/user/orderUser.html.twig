@@ -1,0 +1,32 @@
+{% extends 'front/base.html.twig' %}
+
+{% block body %}
+
+    <div class="container user-account my-5 py-2">
+
+        <p class="text-end">La Nîmes'alerie</p>
+        <h2 class="" > Mes commandes</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>Adresse</th>
+                <th> Status</th>
+                <th>Moyen de payment</th>
+                <th>DateCreated</th>
+                <th>ValidationDate</th>
+                <th>InvoiceDate</th>
+                <th>
+                </th>
+            </tr>
+            </thead>
+            <tbody>
+
+                <tr>
+                </tr>
+
+            </tbody>
+        </table>
+        <a class="btn btn-primary" href="{{ path('app_front_user') }} "  >Retour</a>
+    </div>
+
+{% endblock %}

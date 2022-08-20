@@ -3,6 +3,8 @@
 namespace App\Controller\Back;
 
 use App\Entity\MeansOfPayment;
+use App\Form\Filter\CategoryFilterType;
+use App\Form\Filter\MeansOfPaymentFilterType;
 use App\Form\MeansOfPaymentType;
 use App\Repository\MeansOfPaymentRepository;
 use Knp\Component\Pager\PaginatorInterface;
@@ -25,6 +27,14 @@ class MeansOfPaymentController extends AbstractController
     ): Response
     {
         $qb = $meansOfPaymentRepository->getQbAll();
+        $filterForm = $this->createForm(MeansOfPaymentFilterType::class, null, [
+            'method' => 'GET',
+        ]);
+
+        if ($request->query->has($filterForm->getName())) {
+            $filterForm->submit($request->query->get($filterForm->getName()));
+            $builderUpdater->addFilterConditions($filterForm, $qb);
+        }
         $meansOfPayment = $paginator->paginate(
             $qb,
             $request->query->getInt('page', 1),
@@ -35,7 +45,9 @@ class MeansOfPaymentController extends AbstractController
 
 
         return $this->render('back/means_of_payment/index.html.twig', [
-            'means_of_payments' => $meansOfPayment
+            'means_of_payments' => $meansOfPayment,
+            'filters' => $filterForm->createView(),
+
         ]);
     }
 
@@ -54,7 +66,7 @@ class MeansOfPaymentController extends AbstractController
 
         return $this->renderForm('back/means_of_payment/new.html.twig', [
             'means_of_payment' => $meansOfPayment,
-            'form' => $form,
+            'form' =>$form->createView(),
         ]);
     }
 

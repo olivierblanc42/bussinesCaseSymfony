@@ -3,6 +3,7 @@
 namespace App\Controller\Back;
 
 use App\Entity\Product;
+use App\Form\Filter\ProductFilterType;
 use App\Form\ProductType;
 use App\Repository\ProductRepository;
 use Knp\Component\Pager\PaginatorInterface;
@@ -26,6 +27,18 @@ class ProductController extends AbstractController
     ): Response
     {
         $qb = $productRepository->getQbAll();
+
+
+        $filterForm = $this->createForm(ProductFilterType::class, null, [
+            'method' => 'GET',
+        ]);
+
+        if ($request->query->has($filterForm->getName())) {
+            $filterForm->submit($request->query->get($filterForm->getName()));
+            $builderUpdater->addFilterConditions($filterForm, $qb);
+        }
+
+
         $product = $paginator->paginate(
             $qb,
             $request->query->getInt('page', 1),
@@ -35,10 +48,12 @@ class ProductController extends AbstractController
 
         return $this->render('back/product/index.html.twig', [
             'products' => $product,
+            'filters' => $filterForm->createView(),
+
         ]);
     }
 
-    #[Route('/new', name: 'app_back_product_new', methods: ['GET', 'POST'])]
+    #[Route('/new', name: 'app_admin_product_new', methods: ['GET', 'POST'])]
     public function new(Request $request, ProductRepository $productRepository): Response
     {
         $product = new Product();
@@ -48,12 +63,12 @@ class ProductController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $productRepository->add($product, true);
 
-            return $this->redirectToRoute('app_back_product_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_admin_product_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('back/product/new.html.twig', [
             'product' => $product,
-            'form' => $form,
+            'form' =>  $form,
         ]);
     }
 
@@ -74,12 +89,12 @@ class ProductController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $productRepository->add($product, true);
 
-            return $this->redirectToRoute('app_back_product_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_admin_product_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('back/product/edit.html.twig', [
             'product' => $product,
-            'form' => $form,
+            'form' =>  $form,
         ]);
     }
 
@@ -90,6 +105,6 @@ class ProductController extends AbstractController
             $productRepository->remove($product, true);
         }
 
-        return $this->redirectToRoute('app_back_product_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_admin_product_index', [], Response::HTTP_SEE_OTHER);
     }
 }

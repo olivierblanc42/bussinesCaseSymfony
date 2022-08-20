@@ -1,8 +1,8 @@
 .social,
 .payment,
-.socialForm
+.socialForm,
+.allCategories
  {
-
     a {
         display: inline-block;
         width: 50px;
@@ -17,16 +17,12 @@
 }
 
 .delivery {
-    display: flex;
-    align-items: center;
 
     a {
         display: inline-block;
         width: 50px;
         height: 50px;
-        margin-right: 0.8rem;
     }
-
 
     .delivery-log {
         background-image: url("../../../img/svg/autre/delivery.svg");
@@ -35,9 +31,6 @@
 
     }
 
-    >p {
-        margin-bottom: 0;
-    }
 }
 
 .social {
@@ -58,6 +51,12 @@
     }
 }
 
+.allCategories{
+    .categories{
+        background-image: url("../../../img/svg/autre/menu.svg");
+
+    }
+}
 
 
   
@@ -99,7 +98,7 @@
     }
 
     .visa {
-       // background-image: url("../img/svg/payment/visa.svg");
+         background-image: url("../../../img/svg/payment/visa.svg");
 
     }
 }
@@ -115,14 +114,14 @@
     width: 35px;
     height: 35px;
     background-size: cover;
-    //background-image: url("../img/svg/card/money.svg");
+    background-image: url("../../../img/svg/card/money.svg");
 }
 .flash {
     display: inline-block;
-    width: 40px;
-    height: 45px;
+    width: 35px;
+    height: 35px;
     background-size: cover;
-   // background-image: url("../img/svg/card/flash.svg");
+    background-image: url("../../../img/svg/card/flash.svg");
 }
 
 // Info in form
@@ -140,9 +139,55 @@
 
     }
 
-    //TO DO AJOUTER DES LOGO
+}
 
-
+.favorite {
+    display: inline-block;
+    background-image: url("../../../img/svg/bar_de_nav/favoris.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 24px;
+    width: 24px;
 }
 
 
+.nav-animals{
+
+    a {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+        background-repeat: no-repeat;
+        background-size: contain;
+    }
+
+    .cats {
+        background-image: url("../../../img/svg/bar_de_nav/cat.svg");
+    }
+
+    .dogs {
+        background-image: url("../../../img/svg/bar_de_nav/dog.svg");
+
+
+    }
+
+    .rodents {
+        background-image: url("../../../img/svg/bar_de_nav/rabbit.svg");
+
+
+    }
+
+    .fishes {
+        background-image: url("../../../img/svg/bar_de_nav/fish.svg");
+
+
+    }
+
+    .nav-space {
+
+        background-image: url("../../../img/svg/autre/rocket-launch.svg");
+
+    }
+
+
+}

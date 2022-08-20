@@ -1,0 +1,49 @@
+<!--FOOTER-->
+<footer class="bg-green text-center">
+    <div class="container">
+        <div class="row align-items-center  ">
+            <!--logo-->
+            <div class="col-lg-3  col-md-12  text-center" >
+                <img src="{{ asset('build/img/Logo.png') }}" alt="">
+
+            </div>
+            <!--  SEARCH BAR  -->
+            <div class="col-lg-6 col-md-12 text-center  " >
+                {% include 'front/partials/search.html.twig'%}
+            </div>
+            <!--Contact-->
+            <div class="col-lg-3 col-md-12  text-center" >
+                <a class="btn-footer display-bt"> nous contacter </a>
+            </div>
+        </div>
+
+        <!--delivery + payment-->
+        <div class="row align-items-center">
+            <!--Livraison-->
+            <div class="col-lg-3  col-md-12 delivery  text-center  ">
+{#                <a class="delivery-log" href=""></a>#}
+                <p>Livraison en 24H</p>
+            </div>
+            <!--PAYMENT-->
+            <div class="col-lg-6  col-md-12 payment text-center" >
+                <a class="mastercard" href=""><span>mastercard</span></a>
+                <a class="paypal" href=""><span>paypal</span></a>
+                <a class="visa" href=""><span>visa</span></a>
+            </div>
+            <!--social-icons-->
+            <div class="col-lg-3 col-md-12 social text-center" >
+                <a class="twitter" href=""><span>twitter</span></a>
+                <a class="instagram" href=""><span>instagram</span></a>
+                <a class="facebook" href=""><span>facebook</span></a>
+            </div>
+        </div>
+        <hr>
+        <div class="coyright row">
+            <p class="col-md-12 col-lg-12  ">2022 © La Nîmes’alerie tous droits réservés </p>
+        </div>
+    </div>
+
+
+</footer>
+
+

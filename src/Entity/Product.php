@@ -78,9 +78,9 @@ class Product
 
     #[ORM\Column]
     #[
-        Assert\LessThan(
+        Assert\GreaterThan(
             value:0,
-            message: 'product.quantityInStock.LessThan            ',
+            message: 'product.quantityInStock.GreaterThan',
         ),
     ]
     private ?int $quantityInStock = null;
@@ -90,9 +90,9 @@ class Product
 
     #[ORM\Column(type: Types::DECIMAL, precision: 8, scale: 2)]
     #[
-        Assert\LessThan(
-            value:0,
-            message: 'product.priceHt.LessThan            ',
+        Assert\GreaterThan(
+            value:10,
+            message: 'product.priceHt.GreaterThan',
         ),
     ]
     private ?string $priceHt = null;

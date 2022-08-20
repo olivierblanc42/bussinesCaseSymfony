@@ -4,16 +4,54 @@
 
 {% block body %}
     <h1>Product index</h1>
+ <div>
+
 
     <table class="table">
+
         <thead>
             <tr>
-                <th>Label</th>
-                <th>Description</th>
-                <th>QuantityInStock</th>
+                <th>                   {{
+                    knp_pagination_sortable(
+                        products,
+                        'Nom',
+                        'product.label'
+                    )|raw
+                    }}
+
+                </th>
+                <th>                  {{
+                    knp_pagination_sortable(
+                        products,
+                        'Description',
+                        'product.description'
+                    )|raw
+                    }}
+                </th>
+                <th>Categories</th>
+                <th>                    {{
+                    knp_pagination_sortable(
+                        products,
+                        'Marque',
+                        'brand.label'
+                    )|raw
+                    }}
+                </th>
+                <th>                    {{
+                    knp_pagination_sortable(
+                        products,
+                        'Quantité',
+                        'product.quantityInStock'
+                    )|raw
+                    }}</th>
                 <th>IsActive</th>
-                <th>PriceHt</th>
-                <th>actions</th>
+                <th>                  {{
+                    knp_pagination_sortable(
+                        products,
+                        'Prix',
+                        'product.priceHt'
+                    )|raw
+                    }}</th>
             </tr>
         </thead>
         <tbody>
@@ -21,12 +59,24 @@
             <tr>
                 <td>{{ product.label }}</td>
                 <td>{{ product.description }}</td>
+                <td>
+
+{#                       {{ products.category.label }}#}
+
+                </td>
+                <td>
+                    {{ product.brand.label}}
+                </td>
                 <td>{{ product.quantityInStock }}</td>
                 <td>{{ product.isActive ? 'Yes' : 'No' }}</td>
                 <td>{{ product.priceHt }}</td>
                 <td>
-                    <a href="{{ path('app_back_product_show', {'id': product.id}) }}">show</a>
-                    <a href="{{ path('app_back_product_edit', {'id': product.id}) }}">edit</a>
+                    <a href="{{ path('app_back_product_show', {'id': product.id}) }}">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </a>
+                    <a href="{{ path('app_back_product_edit', {'id': product.id}) }}">
+                        <i class="fa-solid fa-pen"></i>
+                    </a>
                 </td>
             </tr>
         {% else %}
@@ -37,8 +87,10 @@
         </tbody>
     </table>
 
-    <div class="navigation d-flex justify-content-center mt-2">
+
+     <div class="navigation d-flex justify-content-center mt-2">
         {{ knp_pagination_render(products) }}
     </div>
-    <a href="{{ path('app_back_product_new') }}">Create new</a>
+ </div>
+    <a href="{{ path('app_admin_product_new') }}">Create new</a>
 {% endblock %}

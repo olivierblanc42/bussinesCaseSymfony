@@ -11,13 +11,50 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Email</th>
-                <th>Username</th>
-                <th>FirstName</th>
-                <th>LastName</th>
+                <th>{{
+                    knp_pagination_sortable(
+                        users,
+                        'Email',
+                        'user.email'
+                    )|raw
+                    }}</th>
+                <th>{{
+                    knp_pagination_sortable(
+                        users,
+                        'Pseudo',
+                        'user.username'
+                    )|raw
+                    }}</th>
+                <th>{{
+                    knp_pagination_sortable(
+                        users,
+                        'Prénom',
+                        'user.firstName'
+                    )|raw
+                    }}</th>
+                <th>{{
+                    knp_pagination_sortable(
+                        users,
+                        'nom',
+                        'user.lastName'
+                    )|raw
+                    }}</th>
+                <th> {{
+                    knp_pagination_sortable(
+                        users,
+                        'Genre',
+                        'gender.label'
+                    )|raw
+                    }}</th>
                 <th>DateOfBirth</th>
                 <th>RegistrationDate</th>
-                <th>actions</th>
+                <th>
+                    <div>
+                        <button type="submit" class="filter-action">
+                            <i class="fas fa-filter"></i>
+                        </button>
+                    </div>
+                </th>
             </tr>
         </thead>
         <tbody>
@@ -27,6 +64,7 @@
                 <td>{{ user.username }}</td>
                 <td>{{ user.firstName }}</td>
                 <td>{{ user.lastName }}</td>
+                <td>{{ user.gender.label}}</td>
                 <td>{{ user.dateOfBirth ? user.dateOfBirth|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ user.registrationDate ? user.registrationDate|date('Y-m-d H:i:s') : '' }}</td>
                 <td>

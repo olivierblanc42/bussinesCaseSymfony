@@ -1,0 +1,68 @@
+
+{% extends 'back/base.html.twig' %}
+
+{% block title %}Picture index{% endblock %}
+
+{% block body %}
+    <h1>Picture index</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+
+                <th>               {{
+                    knp_pagination_sortable(
+                        pictures,
+                        'Nom',
+                        'picture.name'
+                    )|raw
+                    }}
+                </th>
+                <th>     {{
+                    knp_pagination_sortable(
+                        pictures,
+                        'Chemin',
+                        'picture.path'
+                    )|raw
+                    }}
+                </th>
+                <th>     {{
+                    knp_pagination_sortable(
+                        pictures,
+                        'Produit',
+                        'product.label'
+                    )|raw
+                    }}
+
+
+                </th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for picture in pictures %}
+            <tr>
+                <td>{{ picture.name }}</td>
+                <td>{{ picture.path }}</td>
+                <td>{{ picture.product.label }}</td>
+                <td>
+                    <a href="{{ path('app_back_picture_show', {'id': picture.id}) }}">
+                        <i class="fa-solid fa-circle-info"></i>
+                    </a>
+                    <a href="{{ path('app_back_picture_edit', {'id': picture.id}) }}">
+                        <i class="fa-solid fa-pen"></i>
+                    </a>
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <div class="navigation d-flex justify-content-center mt-2">
+        {{ knp_pagination_render(pictures) }}
+    </div>
+    <a href="{{ path('app_back_picture_new') }}">Create new</a>
+{% endblock %}

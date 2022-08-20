@@ -9,20 +9,60 @@
     <table class="table">
         <thead>
             <tr>
-                <th>Id</th>
+                <th>
+                    {{
+                    knp_pagination_sortable(
+                        baskets,
+                        'Client',
+                        'user.username'
+                    )|raw
+                    }}
+                    {{ form_widget(filters.user) }}
+                </th>
+                <th>{{
+                    knp_pagination_sortable(
+                        baskets,
+                        'Adresse',
+                        'address.city'
+                    )|raw
+                    }}</th>
+                <th>{{
+                    knp_pagination_sortable(
+                        baskets,
+                        'Status',
+                        'commandStatus.label'
+                    )|raw
+                    }}</th>
+                <th>{{
+                    knp_pagination_sortable(
+                        baskets,
+                        'Moyen de payment',
+                        'meansOfPayment.label'
+                    )|raw
+                    }}</th>
                 <th>DateCreated</th>
                 <th>ValidationDate</th>
                 <th>InvoiceDate</th>
-                <th>actions</th>
+                <th>
+                    <div>
+                        <button type="submit" class="filter-action">
+                            <i class="fas fa-filter"></i>
+                        </button>
+                    </div>
+                </th>
             </tr>
         </thead>
         <tbody>
         {% for basket in baskets %}
             <tr>
-                <td>{{ basket.id }}</td>
+                <td>{{ basket.user.username }}</td>
+                <td>{{ basket.address.city }}</td>
+                <td>{{ basket.commandStatus.label }}</td>
+                <td>{{ basket.meansOfPayment.label }}</td>
                 <td>{{ basket.dateCreated ? basket.dateCreated|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ basket.validationDate ? basket.validationDate|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ basket.invoiceDate ? basket.invoiceDate|date('Y-m-d H:i:s') : '' }}</td>
+
                 <td>
                     <a href="{{ path('app_back_basket_show', {'id': basket.id}) }}">show</a>
                     <a href="{{ path('app_back_basket_edit', {'id': basket.id}) }}">edit</a>
@@ -36,5 +76,9 @@
         </tbody>
     </table>
 
+
+    <div class="navigation d-flex justify-content-center mt-2">
+        {{ knp_pagination_render(baskets) }}
+    </div>
     <a href="{{ path('app_back_basket_new') }}">Create new</a>
 {% endblock %}
