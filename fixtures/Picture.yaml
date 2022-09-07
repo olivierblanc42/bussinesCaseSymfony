@@ -1,5 +1,4 @@
 App\Entity\Picture:
-  picture{1..100}:
+  picture{1..2000}:
     name: '<firstName()>'
-    product: '@product*'
     path: 'https://picsum.photos/200/300'

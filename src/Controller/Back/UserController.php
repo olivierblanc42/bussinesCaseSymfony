@@ -24,6 +24,7 @@ class UserController extends AbstractController
         Request $request
     ): Response
     {
+
         $qb = $userRepository->getQbAll();
 
 
@@ -46,6 +47,7 @@ class UserController extends AbstractController
             'users' => $users,
             'filters' => $filterForm->createView(),
         ]);
+
     }
 
     #[Route('/new', name: 'app_back_user_new', methods: ['GET', 'POST'])]

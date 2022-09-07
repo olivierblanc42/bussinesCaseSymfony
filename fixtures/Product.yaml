@@ -1,6 +1,6 @@
 App\Entity\Product:
   product{1..500}:
-    label: '<firstName()>'
+    label (unique): '<firstName()>'
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In eget dignissim odio. Mauris a blandit ligula. Quisque nec luctus sapien, vitae tristique ante. Cras aliquam est tellus, et ultricies mauris mattis a.'
     quantityInStock: '<numberBetween(40, 350)>'
     isActive: 'test'
@@ -8,4 +8,5 @@ App\Entity\Product:
     brand: '@Brand*'
     species: '@species*'
     category: '@Category0*'
+    picture: '<numberBetween(2, 3)>x @picture*'
     

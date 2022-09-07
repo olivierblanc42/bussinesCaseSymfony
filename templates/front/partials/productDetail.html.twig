@@ -1,0 +1,39 @@
+
+<div class="container  detail-product my-5">
+    <div class="row">
+      <div class="col-6 container-images my-auto ">
+          <div class="row">
+              <div class="col-3  container-image-p ">
+                  <div class="row d-flex flex-column  " >
+                      {% for productIteration in product.picture %}
+                     <img src="{{ productIteration.path }}" class="mx-auto">
+                      {% endfor %}
+                  </div>
+              </div>
+              <div class="col-9 container-image-g  " >
+                  <img src="{{ product.picture[0].path }}" class="my-auto">
+              </div>
+          </div>
+      </div>
+
+        <div  class="col-6 text-container ">
+         <h3>{{ product.label }}</h3>
+            <p>{{ product.description }}</p>
+            <p class="price">{{ product.priceHt }} €</p>
+         <p>etoile</p>
+
+            <div class="d-flex flex-row align-items-center">
+                <a class="favorite-green me-2" ></a>
+                <a class="btn btn-primary ms-2" > Ajouter au panier  </a>
+            </div>
+            <div class="payment text-center" >
+                <a class="mastercard" href=""><span>mastercard</span></a>
+                <a class="paypal" href=""><span>paypal</span></a>
+                <a class="visa" href=""><span>visa</span></a>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

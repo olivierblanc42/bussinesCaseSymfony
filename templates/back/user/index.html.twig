@@ -46,6 +46,17 @@
                         'gender.label'
                     )|raw
                     }}</th>
+                <th>
+                    {{
+                    knp_pagination_sortable(
+                        users,
+                        'Panier',
+                        'nbBasket'
+                    )|raw
+                    }}
+                    <span class="empty-filter"></span>
+                </th>
+                <th>Commande</th>
                 <th>DateOfBirth</th>
                 <th>RegistrationDate</th>
                 <th>
@@ -60,16 +71,18 @@
         <tbody>
         {% for user in users %}
             <tr>
-                <td>{{ user.email }}</td>
-                <td>{{ user.username }}</td>
-                <td>{{ user.firstName }}</td>
-                <td>{{ user.lastName }}</td>
-                <td>{{ user.gender.label}}</td>
-                <td>{{ user.dateOfBirth ? user.dateOfBirth|date('Y-m-d H:i:s') : '' }}</td>
-                <td>{{ user.registrationDate ? user.registrationDate|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ user[0].email }}</td>
+                <td>{{ user[0].username }}</td>
+                <td>{{ user[0].firstName }}</td>
+                <td>{{ user[0].lastName }}</td>
+                <td>{{ user[0].gender.label}}</td>
+                <td>{{ user['nbBasket'] }}</td>
+                <td></td>
+                <td>{{ user[0].dateOfBirth ? user[0].dateOfBirth|date('d/m/Y') : '' }}</td>
+                <td>{{ user[0].registrationDate ? user[0].registrationDate|date('d/m/Y') : '' }}</td>
                 <td>
-                    <a href="{{ path('app_back_user_show', {'id': user.id}) }}">show</a>
-                    <a href="{{ path('app_back_user_edit', {'id': user.id}) }}">edit</a>
+                    <a href="{{ path('app_back_user_show', {'id': user[0].id}) }}">show</a>
+                    <a href="{{ path('app_back_user_edit', {'id': user[0].id}) }}">edit</a>
                 </td>
             </tr>
         {% else %}

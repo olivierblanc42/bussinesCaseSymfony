@@ -2,7 +2,9 @@
 
 namespace App\Controller\Front;
 
+use App\Entity\Product;
 use App\Repository\ProductRepository;
+use App\Repository\ReviewRepository;
 use Knp\Component\Pager\PaginatorInterface;
 use Lexik\Bundle\FormFilterBundle\Filter\FilterBuilderUpdaterInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -26,6 +28,7 @@ class ProductController extends AbstractController
             $request->query->getInt('page', 1),
             9
         );
+
 
         return $this->render('front/product/index.html.twig', [
             'products' => $product,
@@ -52,5 +55,34 @@ class ProductController extends AbstractController
             'products' => $product,
         ]);
     }
+
+
+    #[Route('/detail/{id}', name: 'app_detail_product')]
+    public function detail(
+        Request $request,
+        ProductRepository $productRepository,
+        PaginatorInterface $paginator,
+        $id,
+        ReviewRepository $reviewRepository
+    ): Response
+    {
+        $product = $productRepository->find($id);
+        $reviews = $paginator->paginate(
+            $reviewRepository->getQueryBuilderByProduct($id),
+            $request->query->getInt('page', 1),
+            6
+        );
+
+        dump($reviews);
+        dump($product);
+        return $this->render('front/product/detail.html.twig', [
+            'controller_name' => 'UserAuthenticatorController',
+            'product'=> $product,
+            'reviews'=>$reviews,
+            'products'=> $productRepository->findBy([], ['label' => 'DESC'], 3),
+
+        ]);
+    }
+
 
 }

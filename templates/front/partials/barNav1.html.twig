@@ -14,19 +14,23 @@
 
         </div>
         <!-- Button trigger modal -->
-
-
         <a href="{{ path('app_back_category_index') }}" class="nav-link px-0 btn btn-primary"> <span class="d-none d-sm-inline">Provisoire</span></a>
 
         <div class="navbar-brand" >
-            <div class="btn btn-yellow" data-bs-toggle="modal" data-bs-target="#connectionModal">
-                <div>
-                    <p>Bienvenue</p>
-                    <p class="display-bt">Accéder a votre compte</p>
-                </div>
-                <img class="user-img" src="./img/svg/bar_de_nav/user.svg" alt="">
-            </div>
-            {% include 'front/partials/modal.html.twig'%}
+            {% if app.user %}
+                <a class="btn btn-yellow"  href="{{  path('app_login') }}">
+                        <p>Bienvenue</p>
+                        <p class="display-bt">{{app.user.username}}</p>
+                </a>
+
+            {% else%}
+
+                    <a class="btn btn-yellow" href="{{  path('app_login') }}">
+                        <p>Bienvenue</p>
+                        <p class="display-bt">Accéder a votre compte</p>
+                    </a>
+
+            {% endif %}
         </div>
     </div>
 </nav>

@@ -64,8 +64,9 @@ class ProductRepository extends AbstractBusinessCaseRepository
     public function getQbAll(): QueryBuilder
     {
         $qb = parent::getQbAll();
-        return $qb->select('product','brand')
+        return $qb->select('product','brand','productReview','picture')
             ->join('product.review','productReview')
+            ->join('product.picture','picture')
             ->join('product.brand','brand')
             ;
     }

@@ -232,9 +232,10 @@ class BasketRepository extends AbstractBusinessCaseRepository
     public function getQbAll(): QueryBuilder
     {
         $qb = parent::getQbAll();
-        return $qb->select('basket','address','commandStatus','meansOfPayment','user')
+        return $qb->select('basket','address','commandStatus','meansOfPayment','user','basketQuantityInBasket')
             ->join('basket.address','address')
             ->join('basket.user','user')
+            ->join('basket.basketQuantityInBasket','basketQuantityInBasket')
             ->join('basket.commandStatus','commandStatus')
             ->join('basket.meansOfPayment','meansOfPayment')
             ;

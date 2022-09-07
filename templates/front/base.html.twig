@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr" >
     <head>
         <meta charset="UTF-8">
         <title>{% block title %}Welcome!{% endblock %}</title>
@@ -17,7 +17,6 @@
             {% block header %}
                 {% include 'front/partials/barNav1.html.twig' %}
                 {% include 'front/partials/barNav2.html.twig' %}
-
             {% endblock %}
         </header>
 
@@ -25,7 +24,12 @@
 
         {% endblock %}
 
-        <footer>
+
+        {% include 'front/partials/info.html.twig' %}
+
+
+
+    <footer>
             {% block footer %}
             {% include 'front/partials/footer.html.twig' %}
             {% endblock %}

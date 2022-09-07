@@ -12,7 +12,7 @@ class UserController extends AbstractController
     public function index(): Response
     {
         return $this->render('front/user/index.html.twig', [
-            'controller_name' => 'UserController',
+            'controller_name' => 'UserAuthenticatorController',
         ]);
     }
 
@@ -20,21 +20,21 @@ class UserController extends AbstractController
     public function detail(): Response
     {
         return $this->render('front/user/detailUser.html.twig', [
-            'controller_name' => 'UserController',
+            'controller_name' => 'UserAuthenticatorController',
         ]);
     }
     #[Route('/order', name: 'app_order_user')]
     public function order(): Response
     {
         return $this->render('front/user/orderUser.html.twig', [
-            'controller_name' => 'UserController',
+            'controller_name' => 'UserAuthenticatorController',
         ]);
     }
     #[Route('/address', name: 'app_address_user')]
     public function address(): Response
     {
         return $this->render('front/user/addressUser.html.twig', [
-            'controller_name' => 'UserController',
+            'controller_name' => 'UserAuthenticatorController',
         ]);
     }
 }

@@ -1,20 +1,10 @@
 .btn {
-    display: flex;
-    flex-direction: row;
-    width: fit-content;
-    text-align: center;
-    >div {
-        align-items: center;
-        order: 2;
-        p {
-            display: none;
-            margin-bottom: 0;
-        }
-    }
-    img {
-        display: block;
-    }
+
 }
+
+
+
+
 
 .btn-yellow {
     background-color: transparent;
@@ -24,34 +14,17 @@
 
 @media screen and (min-width: 1024px) {
     .btn {
-        display: flex;
-        flex-direction: row;
-        width: fit-content;
-        padding: $padding-m;
-        text-align: left;
 
-        >div {
-            line-height: .7rem;
-            text-align: center;
+      p{
+        margin: 0px;
+      }
 
-            p {
-                display: block;
-                margin-bottom: 0;
-            }
-        }
-
-        >img {
-            display: none;
-
-        }
-
-        
     }
 
     .btn-yellow {
         background-color: $bg-yellow;
         border-radius: 10px;
-        margin-left: 150px;
+
     }
 }
 
@@ -79,8 +52,6 @@
 
 
 .btn-footer {
-
-    
         outline: none;
         text-decoration: none;
         display: inline-block;
@@ -91,7 +62,6 @@
         border-radius: 10px; 
         padding: 2px 4px;
         text-transform: uppercase;
-
 }
 
 
@@ -107,6 +77,6 @@
     font-size: 18px;
 }
 
-// .btn-card:hover {
+.btn-card{
 
-//   }
+}

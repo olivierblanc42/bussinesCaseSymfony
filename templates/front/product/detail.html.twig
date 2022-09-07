@@ -1,0 +1,75 @@
+{% extends 'front/base.html.twig' %}
+
+{% block body %}
+
+    {% include 'front/partials/productDetail.html.twig' %}
+
+
+
+   <div class="container" >
+       <div class="row">
+           <a class="btn btn-primary col-2">Description</a>
+           <a class="btn btn-primary col-2"> Avis client </a>
+       </div>
+   </div>
+
+
+
+        <h2 class="mt-3 mb-4"> Des produits pour  <span class="span-green"> Vous </span></h2>
+
+        <div id="carouselSelection" class="carousel carousel-dark slide my-2 " data-bs-ride="carousel">
+
+            <div class="carousel-inner py-2">
+                <div class="carousel-item active">
+                    <div class=" container  cards-wrapper"   >
+
+                        {% for productIteration in products %}
+                            <div class="col-lg-4 col-md-12">
+                                {% include 'front/partials/cardProduct.html.twig' with {
+                                    'product': productIteration
+                                } %}
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="cards-wrapper container  "   >
+
+                        {% for productIteration in products %}
+                            <div class="col-lg-4 col-md-12">
+                                {% include 'front/partials/cardProduct.html.twig' with {
+                                    'product': productIteration
+                                } %}
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="carousel-item">
+                    <div class="cards-wrapper container  "   >
+
+                        {% for productIteration in products %}
+                            <div class="col-lg-4 col-md-12">
+                                {% include 'front/partials/cardProduct.html.twig' with {
+                                    'product': productIteration
+                                } %}
+                            </div>
+                        {% endfor %}
+
+                    </div>
+                </div>
+            </div>
+            <button class="carousel-control-prev" type="button" data-bs-target="#carouselSelection" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselSelection" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+        <a class="btn btn-primary mx-auto" href="{{ path('user_best_product')}}"   >voir nos produits</a>
+
+
+{% endblock %}

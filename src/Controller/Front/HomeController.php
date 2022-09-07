@@ -42,4 +42,29 @@ class HomeController extends AbstractController
             'review'=> $reviewRepository->findBy([],['note'=>'DESC'],3)
         ]);
     }
+
+//    #[Route('/space', name: 'app_home')]
+//    public function space(): Response
+//    {
+//
+//
+//
+//        return $this->render('Front/home/space.html.twig', [
+//            'controller_name' => 'HomeController',
+//
+//        ]);
+//    }
+//
+//    #[Route('/contact', name: 'app_home')]
+//    public function contact(): Response
+//    {
+//
+//
+//
+//        return $this->render('/Front/home/contactForm.html.twig', [
+//            'controller_name' => 'HomeController',
+//
+//        ]);
+//    }
+
 }

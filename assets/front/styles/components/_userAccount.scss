@@ -4,7 +4,10 @@
     background-color: $bgwhite ;
     box-shadow: rgba(0, 0, 0, 0.8) 0px 3px 7px ;
     border-radius: 0.25rem;
-
+    //.user-account:hover {
+    //  transform: scale(1.05);
+    //  transition: all 0.3s ease-in;
+    //}
   }
   >h2{
     color: $bg-green;
@@ -18,8 +21,11 @@
     border-radius: 0.25rem;
 
     .container-img{
+      text-decoration: none;
       height: 120px;
-
+       .i{
+         height: 100%;
+       }
 
     }
     .card-text {

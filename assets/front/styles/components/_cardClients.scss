@@ -88,3 +88,25 @@
 
   }
 }
+
+.card-client{
+  box-shadow: rgba(0, 0, 0, 0.16) 0 1px 4px;
+  background-color: #f6f6f6;
+  height: 300px;
+  border-radius: 0.25rem;
+  padding: 1rem;
+  .card-client-text{
+    width: 100%;
+
+  }
+  .client-utils{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    padding-left: 1rem;
+    padding-right: 1rem;
+
+
+  }
+}

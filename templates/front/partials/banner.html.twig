@@ -1,58 +1,69 @@
+<div class="banner px-5 py-5" >
 
-<div class="banner" >
 
-    <div>
+
+<div class="container  ">
+
+    <div class='mb-5 col-5 insert'>
         <p class="display-1">le meilleurs pour eux 💛</p>
         <h1 class="display-2">La Nîmes’alerie</h1>
         <p class="display-3">Votre animalerie en ligne</p>
         <p class="btn btn-banner">Découvrez nos produits phare</p>
     </div>
 
-<div class="container ">
+    <div class="row  justify-content-between   " >
 
-    <div class="row justify-content-md-center">
-        <div class="col-lg-4 CardB ">
-            <div class="container-flex">
-                <img src="img/img/user.png" alt="Photo de l'utilisateur">
-                <p> Bonjour <span class="span-green" > Bruno</span> <br><span> Client depuis 2022</span></p>
-            </div>
-            <!-- Utilis Card-->
-            <div class=" mx-auto container ">
-                <div class="row align-items-center  ">
-                    <div class="col-6 text-center">
-                        <a class="money " href=""></a>
-                        <p>Commandes</p>
-                    </div>
-                    <div class="col-6  text-center">
-                        <a class="money " href=""></a>
-                        <p>Offre Flash</p>
-                    </div>
-
+        <div class="col-3 CardB2 card1 ">
+            <div class="row" >
+                <div class="col-12 container-flex my-2 container-image1 "  >
+                    <img class="me-2" src="{{ asset('build/img/userprofile/user.png') }}" alt="Photo de l'utilisateur">
+                    <p> Bonjour <span class="span-green">cliquez ici pour vous connecter</span> </p>
                 </div>
-
-            </div>
-            <!--Button-Connexion-->
-            <div class="btn btn-yellow  mx-auto">
-                <div>
-                    <p>Bienvenue</p>
-                    <p class="display-bt">Accéder a votre compte</p>
+                <div class="col-12"  >
+                    <div class="row justify-content-around ">
+                        <div class="col-4 text-center card-utils1 bg-danger" >
+                            t
+                        </div>
+                        <div class="col-4 text-center util2 bg-green   " >
+                        t
+                        </div>
+                    </div>
                 </div>
             </div>
+
+{#                  <a class="btn btn-yellow" href="{{  path('app_login') }}">#}
+{#                      <p>Bienvenue</p>#}
+{#                      <p class="display-bt">Accéder a votre compte</p>#}
+{#                  </a>#}
+                  <a class="btn btn-primary col-12" >Bouton</a>
+
+
         </div>
 
-        <div class="col-lg-4 CardB mx-5 ">
-            <p class="boldContent"> -40 % sur une large gamme de produits !</p>
-            <img src="{{ asset('build/img/img/chien.png') }}" alt="Photo d'un petit chien. ">
-            <a href="">Voir les offres </a>
-        </div>
+        <div class="col-3 CardB2 card3 mx-2  ">
+            <p> <span class="display-green" >Une large gamme </span> de produit ne passez pas à côté !</p>
+            <div class="cardB-img" >
+                <img src="{{ asset('build/img/img/chien.png') }}" alt="Picture of young dog ">
+            </div>
+            <a>Acheter</a>
+        </div >
 
-        <div class="col-lg-4 CardB ">
-            <p class="boldContent"> La Nîmes'alerie envoie votre compagnon dans l'espace !</p>
-            <img src="{{ asset('build/img/img/catInSpace.png') }}" alt="Photo d'un chat dans l'espace.">
-            <a href="">En savoir plus</a>
+        <div class="col-3 CardB2 card3 ">
+            <p>La Nîmes'alerie envoie votre compagnon dans <span class="display-green" >l'espace ! </span></p>
+
+            <div class="cardB-img" >
+            <img src="{{ asset('build/img/img/catInSpace.png') }}" alt="Picture of cat in space ">
+            </div>
+
+            <a>En savoir plus</a>
         </div>
 
     </div>
+
+
 </div>
 
 </div>
+
+
+

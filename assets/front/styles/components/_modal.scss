@@ -1,28 +1,35 @@
-.modal {
-    .modal-title {
-        color: $bg-green;
-        text-transform: uppercase;
-    }
+//.modal {
+//    .modal-title {
+//        color: $bg-green;
+//        text-transform: uppercase;
+//    }
+//
+//    .modal-body {
+//        color: $bg-green;
+//    }
+//
+//    .btn-primary{
+//        background-color: $bg-green;
+//        border-color: $bg-green;
+//        margin-left: 1rem;
+//    }
+//    .btn-primary:hover{
+//        background-color: #328475;
+//        border-color: #328475;
+//    }
+//
+//   a{
+//   text-decoration: none;
+//   color: $bg-green;
+//   }
+//}
 
-    .modal-body {
-        color: $bg-green;
-    }
+.connection{
+  text-decoration: none;
+  &.connection{
+    background-color: $bgwhite ;
+    box-shadow: rgba(0, 0, 0, 0.8) 0 3px 7px ;
+    border-radius: 0.25rem;
 
-    .btn-primary{
-        background-color: $bg-green;
-        border-color: $bg-green;
-        margin-left: 1rem;
-    }
-    .btn-primary:hover{
-        background-color: #328475;
-        border-color: #328475;
-    }
-.btn-secondary{
-    margin-right: 1rem;
-}
-
-   a{
-   text-decoration: none;
-   color: $bg-green;
-   }
+  }
 }

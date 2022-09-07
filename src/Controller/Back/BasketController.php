@@ -60,7 +60,7 @@ class BasketController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $basketRepository->add($basket, true);
 
-            return $this->redirectToRoute('app_back_basket_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_admin_basket_index', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('back/basket/new.html.twig', [
