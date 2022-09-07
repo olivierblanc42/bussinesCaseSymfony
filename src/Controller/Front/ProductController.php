@@ -11,7 +11,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-#[Route('/front/product')]
+#[Route('/Front/product')]
 class ProductController extends AbstractController
 {
     #[Route('/', name: 'app_front_product')]

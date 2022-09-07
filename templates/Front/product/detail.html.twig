@@ -1,8 +1,8 @@
-{% extends 'front/base.html.twig' %}
+{% extends '..' %}
 
 {% block body %}
 
-    {% include 'front/partials/productDetail.html.twig' %}
+    {% include 'Front/partials/productDetail.html.twig' %}
 
 
 
@@ -25,7 +25,7 @@
 
                         {% for productIteration in products %}
                             <div class="col-lg-4 col-md-12">
-                                {% include 'front/partials/cardProduct.html.twig' with {
+                                {% include 'Front/partials/cardProduct.html.twig' with {
                                     'product': productIteration
                                 } %}
                             </div>
@@ -38,7 +38,7 @@
 
                         {% for productIteration in products %}
                             <div class="col-lg-4 col-md-12">
-                                {% include 'front/partials/cardProduct.html.twig' with {
+                                {% include 'Front/partials/cardProduct.html.twig' with {
                                     'product': productIteration
                                 } %}
                             </div>
@@ -50,7 +50,7 @@
 
                         {% for productIteration in products %}
                             <div class="col-lg-4 col-md-12">
-                                {% include 'front/partials/cardProduct.html.twig' with {
+                                {% include 'Front/partials/cardProduct.html.twig' with {
                                     'product': productIteration
                                 } %}
                             </div>

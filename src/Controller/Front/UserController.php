@@ -5,7 +5,7 @@ namespace App\Controller\Front;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-#[Route('/front/user')]
+#[Route('/Front/user')]
 class UserController extends AbstractController
 {
     #[Route('/', name: 'app_front_user')]
