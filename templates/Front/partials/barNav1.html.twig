@@ -1,36 +1,67 @@
-<nav class="navbar navbar-expand-lg nav1 ">
+{# <nav class="navbar navbar-expand-lg nav1 "> #}
+{#    <div class="container-fluid "> #}
+{#        <div class="navbar-brand" > #}
+{#          <a href="{{ path('app_home') }}"   ><img src="{{ asset('build/img/Logo.png') }}" alt=""></a> #}
+{#        </div> #}
+{#        <div class="navbar-brand" > #}
+{#            <div class="d-flex justify-content-center my-3"> #}
+
+{#                <div class="input-group mb-3 text-center  "> #}
+{#                    {% include 'Front/partials/search.html.twig'%} #}
+{#                </div> #}
+
+{#            </div> #}
+
+{#        </div> #}
+{#        <!-- Button trigger modal --> #}
+{#        <a href="{{ path('app_back_category_index') }}" class="nav-link px-0 btn btn-primary"> <span class="d-none d-sm-inline">Provisoire</span></a> #}
+
+{#        <div class="navbar-brand" > #}
+{#            {% if app.user %} #}
+{#                <a class="btn btn-yellow"  href="{{  path('app_login') }}"> #}
+{#                        <p>Bienvenue</p> #}
+{#                        <p class="display-bt">{{app.user.username}}</p> #}
+{#                </a> #}
+
+{#            {% else%} #}
+
+{#                    <a class="btn btn-yellow" href="{{  path('app_login') }}"> #}
+{#                        <p>Bienvenue</p> #}
+{#                        <p class="display-bt">Accéder a votre compte</p> #}
+{#                    </a> #}
+
+{#            {% endif %} #}
+{#        </div> #}
+{#    </div> #}
+{# </nav> #}
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-white nav-1  ">
     <div class="container-fluid ">
-        <div class="navbar-brand containerImage" >
-          <a href="{{ path('app_home') }}"   ><img src="{{ asset('build/img/Logo.png') }}" alt=""></a>
-        </div>
-        <div class="navbar-brand" >
-            <div class="d-flex justify-content-center my-3">
 
-                <div class="input-group mb-3 text-center  ">
-{#                    {% include 'Front/partials/search.html.twig'%}#}
-                </div>
+        <a href="{{ path('app_home') }}" class="navbar-brand img-nav" ><img src="{{ asset('build/img/Logo.png') }}" alt="" class="logo" ></a>
 
-            </div>
+
+        <div class="navbar-brand ">
 
         </div>
-        <!-- Button trigger modal -->
-        <a href="{{ path('app_back_category_index') }}" class="nav-link px-0 btn btn-primary"> <span class="d-none d-sm-inline">Provisoire</span></a>
+        <div class="navbar-brand">
 
-        <div class="navbar-brand" >
-            {% if app.user %}
-                <a class="btn btn-yellow"  href="{{  path('app_login') }}">
-                        <p>Bienvenue</p>
-                        <p class="display-bt">{{app.user.username}}</p>
-                </a>
+                        {% if app.user %}
+                            <a class="btn btn-yellow"  href="{{  path('app_login') }}">
+                                    <p>Bienvenue</p>
+                                    <p class="display-bt">{{app.user.username}}</p>
+                            </a>
 
-            {% else%}
+                        {% else%}
 
-                    <a class="btn btn-yellow" href="{{  path('app_login') }}">
-                        <p>Bienvenue</p>
-                        <p class="display-bt">Accéder a votre compte</p>
-                    </a>
+                                <a class="btn btn-yellow" href="{{  path('app_login') }}">
+                                    <p>Bienvenue</p>
+                                    <p class="display-bt">Accéder a votre compte</p>
+                                </a>
 
-            {% endif %}
+                        {% endif %}
+
         </div>
+
     </div>
 </nav>

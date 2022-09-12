@@ -1,18 +1,25 @@
 
-<div class="cardProd  " >
-    <div class="container-image text-center  ">
-       <a href="{{ path('app_detail_product', {'id': product.id}) }}"> <img src="{{ product.picture[0].path }}" class="mx-auto" ></a>
-    </div>
+<div class="cardProd" >
+
+    <a class="container-image text-center" href="{{ path('app_detail_product', {'id': product.id}) }}"> <img  src="{{ product[0].picture[0].path }}"  alt="" class="mx-auto" ></a>
+
     <div class="card-body" >
 
-        <div class="container  ">
-            <h4>{{ product.label }}</h4>
-{#            <p> Note moyenne {{ product.note}} <sup></sup> </p>#}
-            <div class="row">
-                <p class="col-6   text-start">{{ product.priceHt }} €</p>
-                <p class="col-6   text-end">test</p>
+        <div class="container">
+            <h4>{{ product[0].label }}</h4>
+            <p>
+{#               Note moyenne {{ product['note']|number_format(1, ',', ',')}}#}
+
+                <sup class="display-green">{{ product['Numbnote'] }}</sup> </p>
+            <div class=" d-flex flex-wrap justify-content-between product-utils ">
+                <p class="text-start">{{ product[0].priceHt }} €</p>
+                <a class="favorite-green"  href="#"
+                   data-game-favorite-id="{{ product[0].id }}"
+                ></a>
             </div>
-                <a class="btn btn-primary  mx-auto">Ajouter au panier</a>
+
+            <a class="btn btn-yellow d-flex justify-content-center align-items-center ">Ajouter au panier  <i class="fa-solid fa-cart-shopping mx-1"></i></a>
+
         </div>
 
     </div>

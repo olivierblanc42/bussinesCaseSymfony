@@ -1,201 +1,199 @@
 .social,
 .payment,
 .socialForm,
-.allCategories
- {
-    a {
-        display: inline-block;
-        width: 50px;
-        height: 50px;
-        background-size: cover;
+.allCategories {
+  a {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-size: cover;
 
-        span {
-            display: none;
-        }
-
+    span {
+      display: none;
     }
+
+  }
 }
 
 .delivery {
 
-    a {
-        display: inline-block;
-        width: 50px;
-        height: 50px;
-    }
+  a {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+  }
 
-    .delivery-log {
-        background-image: url("../../../img/svg/autre/delivery.svg");
-        background-size: cover;
-        background-repeat: no-repeat;
+  .delivery-log {
+    background-image: url("../../../img/svg/autre/delivery.svg");
+    background-size: cover;
+    background-repeat: no-repeat;
 
-    }
+  }
 
 }
 
 .social {
-    .twitter {
-     background-image: url("../../../img/svg/social_media/twitter.svg");
+  .twitter {
+    background-image: url("../../../img/svg/social_media/twitter.svg");
 
-    }
+  }
 
-    .instagram {
-        background-image: url("../../../img/svg/social_media/instagram.svg");
+  .instagram {
+    background-image: url("../../../img/svg/social_media/instagram.svg");
 
 
-    }
+  }
 
-    .facebook {
-        background-image: url("../../../img/svg/social_media/facebook.svg");
+  .facebook {
+    background-image: url("../../../img/svg/social_media/facebook.svg");
 
-    }
+  }
 }
 
-.allCategories{
-    .categories{
-        background-image: url("../../../img/svg/autre/menu.svg");
+.allCategories {
+  .categories {
+    background-image: url("../../../img/svg/autre/menu.svg");
 
-    }
-}
-
-
-  
-
- 
-
-
-
-.socialForm{
-     .twitter {
-         background-image: url("../../../img/svg/social_media/twitterBlack.svg");
-
-    }
-
-    .instagram {
-        background-image: url("../../../img/svg/social_media/instagramBlack.svg");
-
-
-    }
-
-    .facebook {
-       background-image: url("../../../img/svg/social_media/facebookBlack.svg");
-
-    }
+  }
 }
 
 
+.socialForm {
+  .twitter {
+    background-image: url("../../../img/svg/social_media/twitterBlack.svg");
+
+  }
+
+  .instagram {
+    background-image: url("../../../img/svg/social_media/instagramBlack.svg");
+
+
+  }
+
+  .facebook {
+    background-image: url("../../../img/svg/social_media/facebookBlack.svg");
+
+  }
+}
 
 
 .payment {
-    .mastercard {
-        background-image: url("../../../img/svg/payment/mastercard.svg");
+  .mastercard {
+    background-image: url("../../../img/svg/payment/mastercard.svg");
 
-    }
+  }
 
-    .paypal {
-        background-image: url("../../../img/svg/payment/paypal.svg");
+  .paypal {
+    background-image: url("../../../img/svg/payment/paypal.svg");
 
-    }
+  }
 
-    .visa {
-         background-image: url("../../../img/svg/payment/visa.svg");
+  .visa {
+    background-image: url("../../../img/svg/payment/visa.svg");
 
-    }
+  }
 }
 
 
+// lien CardB
 
-
-
-// lien CardB 
-
-.money{
-    display: inline-block;
-    width: 35px;
-    height: 35px;
-    background-size: cover;
-    background-image: url("../../../img/svg/card/money.svg");
+.money {
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background-size: cover;
+  background-image: url("../../../img/svg/card/money.svg");
 }
+
 .flash {
-    display: inline-block;
-    width: 35px;
-    height: 35px;
-    background-size: cover;
-    background-image: url("../../../img/svg/card/flash.svg");
+  display: inline-block;
+  width: 35px;
+  height: 35px;
+  background-size: cover;
+  background-image: url("../../../img/svg/card/flash.svg");
 }
 
 // Info in form
 
-.telephone,.location,.schedule{
+.telephone, .location, .schedule {
 
-    a {
-        display: inline-block;
-        width: 50px;
-        height: 50px;
-        background-size: cover;
+  a {
+    display: inline-block;
+    width: 50px;
+    height: 50px;
+    background-size: cover;
 
-     
-      
 
-    }
+  }
 
 }
 
 .favorite {
-    display: inline-block;
-    background-image: url("../../../img/svg/bar_de_nav/favoris.svg");
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 24px;
-    width: 24px;
+  display: inline-block;
+  background-image: url("../../../img/svg/bar_de_nav/favoris.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 24px;
+  width: 24px;
 }
 
 .favorite-green {
-    display: inline-block;
-    background-image: url("../../../img/svg/bar_de_nav/favorisGreen.svg");
-    background-repeat: no-repeat;
-    background-size: contain;
-    height: 24px;
-    width: 24px;
+  display: inline-block;
+  background-image: url("../../../img/svg/bar_de_nav/favorisGreen.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 24px;
+  width: 24px;
 }
 
-.nav-animals{
+.basket {
+  display: inline-block;
+  background-image: url("../../../img/svg/autre/backet.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 24px;
+  width: 24px;
+}
 
-    a {
-        display: inline-block;
-        width: 24px;
-        height: 24px;
-        background-repeat: no-repeat;
-        background-size: contain;
-    }
+.nav-animals {
+  margin-left: 0;
+  margin-right: 0;
 
-    .cats {
-        background-image: url("../../../img/svg/bar_de_nav/cat.svg");
-    }
+  a {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
 
-    .dogs {
-        background-image: url("../../../img/svg/bar_de_nav/dog.svg");
+  .cats {
+    background-image: url("../../../img/svg/bar_de_nav/cat.svg");
+  }
 
-
-    }
-
-    .rodents {
-        background-image: url("../../../img/svg/bar_de_nav/rabbit.svg");
+  .dogs {
+    background-image: url("../../../img/svg/bar_de_nav/dog.svg");
 
 
-    }
+  }
 
-    .fishes {
-        background-image: url("../../../img/svg/bar_de_nav/fish.svg");
+  .rodents {
+    background-image: url("../../../img/svg/bar_de_nav/rabbit.svg");
 
 
-    }
+  }
 
-    .nav-space {
+  .fishes {
+    background-image: url("../../../img/svg/bar_de_nav/fish.svg");
 
-        background-image: url("../../../img/svg/autre/rocket-launch.svg");
 
-    }
+  }
+
+  .nav-space {
+
+    background-image: url("../../../img/svg/autre/rocket-launch.svg");
+
+  }
 
 
 }

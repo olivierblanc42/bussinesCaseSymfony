@@ -1,0 +1,44 @@
+.cardProd {
+  text-decoration: none;
+  margin-left: 10px;
+  box-shadow: rgba(0, 0, 0, 0.8) 0 3px 7px;
+  background-color: #f6f6f6;
+  text-align: center;
+  padding: 10px;
+  border-radius: 0.25rem;
+  height: 450px;
+
+
+
+  h4 {
+    color: $bg-green;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+  }
+
+  .container-image {
+    padding-left: 2rem;
+    padding-right: 2rem;
+
+    > img {
+      cursor: pointer;
+      height: 50%;
+      width: 80%;
+    }
+  }
+
+  .card-body{
+     margin-top: 2rem;
+
+
+    .product-utils {
+      > p {
+        color: $bg-green;
+        font-weight: bold;
+
+      }
+
+    }
+  }
+
+}

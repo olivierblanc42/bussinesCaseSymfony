@@ -1,0 +1,25 @@
+.card-insert{
+  text-decoration: none;
+  background-color: #f6f6f6;
+  padding: 1.5rem;
+  border-radius: 0.25rem;
+  margin-top: 1.5rem;
+
+
+  p{
+    margin-top: 3rem;
+    margin-bottom: 3rem;
+  }
+  h3{
+    color: $bg-green;
+    font-weight: bold;
+    text-transform: uppercase;
+
+  }
+  .container-img{
+     >img{
+       width: 100%;
+     }
+  }
+
+}

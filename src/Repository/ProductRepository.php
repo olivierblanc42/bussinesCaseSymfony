@@ -61,13 +61,15 @@ class ProductRepository extends AbstractBusinessCaseRepository
             ->getResult();
     }
 
+//    Souci avec avg and count il m'enleve le paginator'
     public function getQbAll(): QueryBuilder
     {
         $qb = parent::getQbAll();
-        return $qb->select('product','brand','productReview','picture')
+        return $qb->select('product','brand','productReview','picture','COUNT(productReview.note) AS Numbnote','AVG(productReview.note) AS note')
             ->join('product.review','productReview')
             ->join('product.picture','picture')
             ->join('product.brand','brand')
+            ->groupBy('product')
             ;
     }
 

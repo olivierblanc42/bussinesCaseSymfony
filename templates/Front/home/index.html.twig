@@ -7,13 +7,48 @@
     {% include 'Front/partials/banner.html.twig' %}
 
 
-      <h2  class="mt-3 mb-4">Nos Meilleurs<span class="span-green"> Produits </span></h2>
+    <div class="container card-insert">
+        <div class="row">
+            <div class="col-6 container-img">
+                <img src="{{ asset('build/img/jeuxchat.png') }}" alt="">
+            </div>
+            <div class="col-6">
+                <h3> Les meilleurs jouets pour eux !</h3>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
+                    1500s.</p>
+                <a class="btn btn-yellow">En savoir plus</a>
+            </div>
+        </div>
+    </div>
 
-    <div id="carouselBestProducts" class="carousel carousel-dark slide my-2 " data-bs-ride="carousel">
+    <div class="container card-insert  ">
+        <div class="row">
+            <div class="col-6">
+                <h3> Nos croquettes sont de qualité !</h3>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the
+                    industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type
+                    and scrambled it to make a type specimen book.Lorem Ipsum is simply dummy text of the printing and
+                    typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the
+                    1500s.</p>
+                <a class="btn btn-yellow">En savoir plus</a>
+            </div>
+            <div class="col-6 container-img ">
+                <img src="{{ asset('build/img/croquette-chat-chien.jpg') }}" alt="">
+            </div>
+        </div>
+    </div>
+
+
+    <h2 class="mt-3 mb-4">Nos Meilleurs<span class="span-green"> Produits </span></h2>
+
+    <div id="carouselSelection" class="carousel carousel-dark slide my-2 " data-bs-ride="carousel">
 
         <div class="carousel-inner py-2">
             <div class="carousel-item active">
-                <div class=" container  cards-wrapper"   >
+                <div class=" container  cards-wrapper">
 
                     {% for productIteration in products %}
                         <div class="col-lg-4 col-md-12">
@@ -26,7 +61,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <div class="cards-wrapper container  "   >
+                <div class="cards-wrapper container  ">
 
                     {% for productIteration in products %}
                         <div class="col-lg-4 col-md-12">
@@ -38,7 +73,7 @@
                 </div>
             </div>
             <div class="carousel-item">
-                <div class="cards-wrapper container  "   >
+                <div class="cards-wrapper container  ">
 
                     {% for productIteration in products %}
                         <div class="col-lg-4 col-md-12">
@@ -51,80 +86,22 @@
                 </div>
             </div>
         </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselBestProducts" data-bs-slide="prev">
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselSelection" data-bs-slide="prev">
             <span class="carousel-control-prev-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Previous</span>
         </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselBestProducts" data-bs-slide="next">
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselSelection" data-bs-slide="next">
             <span class="carousel-control-next-icon" aria-hidden="true"></span>
             <span class="visually-hidden">Next</span>
         </button>
     </div>
 
-    <a class="btn btn-primary mx-auto" href="{{ path('user_best_product')}}"   >voir nos produits</a>
-
-
-        <h2  class="mt-3 mb-4">Nos Meilleurs<span class="span-green"> Produits </span></h2>
-
-        <div id="carouselSelection" class="carousel carousel-dark slide my-2 " data-bs-ride="carousel">
-
-            <div class="carousel-inner py-2">
-                <div class="carousel-item active">
-                    <div class=" container  cards-wrapper"   >
-
-                        {% for productIteration in products %}
-                            <div class="col-lg-4 col-md-12">
-                                {% include 'Front/partials/cardProduct.html.twig' with {
-                                    'product': productIteration
-                                } %}
-                            </div>
-                        {% endfor %}
-
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="cards-wrapper container  "   >
-
-                        {% for productIteration in products %}
-                            <div class="col-lg-4 col-md-12">
-                                {% include 'Front/partials/cardProduct.html.twig' with {
-                                    'product': productIteration
-                                } %}
-                            </div>
-                        {% endfor %}
-                    </div>
-                </div>
-                <div class="carousel-item">
-                    <div class="cards-wrapper container  "   >
-
-                        {% for productIteration in products %}
-                            <div class="col-lg-4 col-md-12">
-                                {% include 'Front/partials/cardProduct.html.twig' with {
-                                    'product': productIteration
-                                } %}
-                            </div>
-                        {% endfor %}
-
-                    </div>
-                </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselSelection" data-bs-slide="prev">
-                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselSelection" data-bs-slide="next">
-                <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
-        </div>
-
-        <a class="btn btn-primary mx-auto" href="{{ path('user_best_product')}}"   >voir nos produits</a>
 
 
 
 
 
-    <h2  class="mt-3 mb-4">Ils nous ont <span class="span-green"> fait confiance </span></h2>
-    {% include 'Front/partials/carousel.html.twig'%}
+    <h2 class="mt-3 mb-4">Ils nous ont <span class="span-green"> fait confiance </span></h2>
+    {% include 'Front/partials/carousel.html.twig' %}
 
 {% endblock %}

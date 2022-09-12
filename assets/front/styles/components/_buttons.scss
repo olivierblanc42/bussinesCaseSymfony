@@ -5,13 +5,6 @@
 
 
 
-
-.btn-yellow {
-    background-color: transparent;
-    border-radius: 10px;
-}
-
-
 @media screen and (min-width: 1024px) {
     .btn {
 
@@ -22,8 +15,20 @@
     }
 
     .btn-yellow {
-        background-color: $bg-yellow;
-        border-radius: 10px;
+      background-color: $bg-yellow;
+      color: black;
+      --bs-btn-font-weight: 600;
+      --bs-btn-color: var(--bs-white);
+      --bs-btn-bg: var(--bd-violet);
+      --bs-btn-border-color: var(--bd-violet);
+      --bs-btn-hover-color: var(--bs-white);
+      --bs-btn-hover-bg: #{shade-color($bg-yellow, 10%)};
+      --bs-btn-hover-border-color: #{shade-color($bg-yellow, 10%)};
+      --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+      --bs-btn-active-bg: #{shade-color($bg-yellow, 20%)};
+      --bs-btn-active-border-color: #{shade-color($bg-yellow, 20%)};
+      border-radius: 10px;
+
 
     }
 }
@@ -59,7 +64,7 @@
         line-height: 3;
         color: white;
         border: 1px solid white;
-        border-radius: 10px; 
+        border-radius: 10px;
         padding: 2px 4px;
         text-transform: uppercase;
 }

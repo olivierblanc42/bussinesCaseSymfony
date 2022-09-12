@@ -1,70 +1,82 @@
 //**first nav**//
 
-.nav-1 {
-    background-color: $bg-green;
-    height: 89px;
+//.nav-1 {
+//    background-color: $bg-green;
+//    height: 89px;
+//
+//    @media screen and (min-width: 1024px) {
+//        background-color: transparent;
+//        height: auto;
+//    }
+//
+//    .menu {
+//        display: block;
+//        width: 33px;
+//        height: 30px;
+//        background-image: url("../../../img/svg/autre/menu.svg");
+//        background-size: contain;
+//        background-repeat: no-repeat;
+//
+//
+//        //   display none le menu en 1024px
+//        @media screen and (min-width: 1024px) {
+//            display: none;
+//        }
+//    }
+//
+//    .basket {
+//        display: inline-block;
+//        width: 33px;
+//        height: 30px;
+//        background-image: url("../../../img/svg/autre/backet.svg");
+//        background-size: contain;
+//        background-repeat: no-repeat;
+//
+//        @media screen and (min-width: 1024px) {
+//            display: none;
+//        }
+//
+//    }
+//
+//    .search-form {
+//
+//        display: none;
+//
+//        @media screen and (min-width: 1024px) {
+//            display: block;
+//        }
+//
+//    }
+//}
+//
+//.nav-1-left {
+//    >a {
+//        margin-right: 1.5rem;
+//    }
+//
+//    @media screen and (min-width: 1024px) {
+//        >div {
+//            margin-right: 5rem;
+//        }
+//
+//        >div:last-child {
+//            margin-right: 0;
+//        }
+//
+//    }
+//}
 
-    @media screen and (min-width: 1024px) {
-        background-color: transparent;
-        height: auto;
-    }
 
-    .menu {
-        display: block;
-        width: 33px;
-        height: 30px;
-        background-image: url("../../../img/svg/autre/menu.svg");
-        background-size: contain;
-        background-repeat: no-repeat;
+.nav-1{
+    background-color: #F8F8FF !important;
+  height: 100px;
 
-
-        //   display none le menu en 1024px
-        @media screen and (min-width: 1024px) {
-            display: none;
-        }
-    }
-
-    .basket {
-        display: inline-block;
-        width: 33px;
-        height: 30px;
-        background-image: url("../../../img/svg/autre/backet.svg");
-        background-size: contain;
-        background-repeat: no-repeat;
-
-        @media screen and (min-width: 1024px) {
-            display: none;
-        }
-
-    }
-
-    .search-form {
-
-        display: none;
-
-        @media screen and (min-width: 1024px) {
-            display: block;
-        }
-
-    }
 }
 
-.nav-1-left {
-    >a {
-        margin-right: 1.5rem;
-    }
 
-    @media screen and (min-width: 1024px) {
-        >div {
-            margin-right: 5rem;
-        }
 
-        >div:last-child {
-            margin-right: 0;
-        }
 
-    }
-}
+
 
 
 //**Second Nav**//
@@ -73,7 +85,9 @@ display: none;
 
     @media screen and (min-width: 1024px) {
         height: 48px;
-
+   .collapse{
+       z-index: 7;
+   }
     .nav-menu {
 
         .menu {
@@ -87,6 +101,11 @@ display: none;
         }
 
     }
+
+
+
+
+
 
 
     .nav-icon {

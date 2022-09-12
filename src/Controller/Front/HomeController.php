@@ -6,7 +6,9 @@ use App\Entity\NumberVisite;
 use App\Repository\ProductRepository;
 use App\Repository\ReviewRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 
@@ -23,23 +25,28 @@ class HomeController extends AbstractController
 
     #[Route('/', name: 'app_home')]
     public function index(
-        ProductRepository $productRepository,
-        ReviewRepository $reviewRepository
+        ProductRepository  $productRepository,
+        Request $request,
+        PaginatorInterface $paginator,
     ): Response
     {
-        $patreon = New NumberVisite();
-        $patreon->setVisitAt(New \DateTime() );
+        $patreon = new NumberVisite();
+        $patreon->setVisitAt(new \DateTime());
         $this->entityManager->persist($patreon);
         $this->entityManager->flush();
 
-
-
+        $qb = $productRepository->getQbAll();
+        $product = $paginator->paginate(
+            $qb,
+            $request->query->getInt('page', 1),
+            9
+        );
 
 
         return $this->render('Front/home/index.html.twig', [
             'controller_name' => 'HomeController',
-            'products'=> $productRepository->findBy([], ['label' => 'DESC'], 3),
-            'review'=> $reviewRepository->findBy([],['note'=>'DESC'],3)
+            'products' => $product,
+
         ]);
     }
 
