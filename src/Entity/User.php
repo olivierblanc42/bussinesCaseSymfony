@@ -149,13 +149,19 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'user', targetEntity: Review::class)]
     private Collection $review;
 
-  
+    #[ORM\ManyToMany(targetEntity: Product::class, inversedBy: 'users')]
+    private Collection $Favorite;
+
+    #[ORM\Column(length: 255)]
+    private ?string $slug = null;
 
     public function __construct()
     {
         $this->basket = new ArrayCollection();
         $this->review = new ArrayCollection();
-      
+        $this->Favorite = new ArrayCollection();
+
+
     }
 
     public function getId(): ?int
@@ -394,5 +400,39 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-   
+    /**
+     * @return Collection<int, Product>
+     */
+    public function getFavorite(): Collection
+    {
+        return $this->Favorite;
+    }
+
+    public function addFavorite(Product $favorite): self
+    {
+        if (!$this->Favorite->contains($favorite)) {
+            $this->Favorite[] = $favorite;
+        }
+
+        return $this;
+    }
+
+    public function removeFavorite(Product $favorite): self
+    {
+        $this->Favorite->removeElement($favorite);
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
 }

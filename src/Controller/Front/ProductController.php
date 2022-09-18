@@ -5,15 +5,23 @@ namespace App\Controller\Front;
 use App\Entity\Product;
 use App\Repository\ProductRepository;
 use App\Repository\ReviewRepository;
+use Doctrine\ORM\NonUniqueResultException;
 use Knp\Component\Pager\PaginatorInterface;
 use Lexik\Bundle\FormFilterBundle\Filter\FilterBuilderUpdaterInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
-#[Route('/Front/product')]
+#[Route('/product')]
 class ProductController extends AbstractController
 {
+
+    public function __construct(
+        private ProductRepository $productRepository
+    ) { }
+
+
+
     #[Route('/', name: 'app_front_product')]
     public function index(
         ProductRepository $productRepository,
@@ -29,7 +37,7 @@ class ProductController extends AbstractController
             9
         );
 
-
+       dump($product);
         return $this->render('front/product/index.html.twig', [
             'products' => $product,
         ]);
@@ -57,32 +65,30 @@ class ProductController extends AbstractController
     }
 
 
-    #[Route('/detail/{id}', name: 'app_detail_product')]
+    /**
+     * @throws NonUniqueResultException
+     */
+    #[Route('/{slug}', name: 'app_detail_product')]
     public function detail(
         Request $request,
-        ProductRepository $productRepository,
         PaginatorInterface $paginator,
-        $id,
+        $slug,
         ReviewRepository $reviewRepository
     ): Response
     {
-        $product = $productRepository->find($id);
         $reviews = $paginator->paginate(
-            $reviewRepository->getQueryBuilderByProduct($id),
+            $reviewRepository->getQueryBuilderByProduct($slug),
             $request->query->getInt('page', 1),
             6
         );
 
         dump($reviews);
-        dump($product);
+
+
         return $this->render('front/product/detail.html.twig', [
-            'controller_name' => 'UserAuthenticatorController',
-            'product'=> $product,
+            'product'=> $this->productRepository->findBySlugRelations($slug),
             'reviews'=>$reviews,
-            'products'=> $productRepository->findBy([], ['label' => 'DESC'], 3),
 
         ]);
     }
-
-
 }

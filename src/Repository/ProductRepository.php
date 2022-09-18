@@ -4,6 +4,7 @@ namespace App\Repository;
 
 use App\Entity\Product;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
+use Doctrine\ORM\NonUniqueResultException;
 use Doctrine\ORM\QueryBuilder;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -74,15 +75,36 @@ class ProductRepository extends AbstractBusinessCaseRepository
     }
 
 
-    public function  getBestReview(){
+    /**
+     * @throws NonUniqueResultException
+     */
+    public function findBySlugRelations($slug)
+    {
         return $this->createQueryBuilder('product')
-            ->select('product.label','AVG(productReview.note)','product.priceHt','productReview.note','COUNT(productReview.note)')
+            ->select('brand','productReview','picture','COUNT(productReview.note) AS Numbnote','AVG(productReview.note) AS note')
             ->join('product.review','productReview')
-            ->groupBy('productReview.note')
-            ->orderBy('AVG(productReview.note)', 'Desc')
+            ->join('product.picture','picture')
+            ->join('product.brand','brand')
+            ->groupBy('product')
+            ->where('product.slug = :slug')
+            ->setParameter('slug', $slug)
             ->getQuery()
-            ->getResult();
+            ->getOneOrNullResult();
+
     }
+
+//    public function  getBestReview(){
+//        return $this->createQueryBuilder('product')
+//            ->select('product.label','AVG(productReview.note)','product.priceHt','productReview.note','COUNT(productReview.note)')
+//            ->join('product.review','productReview')
+//            ->groupBy('productReview.note')
+//            ->orderBy('AVG(productReview.note)', 'Desc')
+//            ->getQuery()
+//            ->getResult();
+//    }
+
+
+
 
 //    /**
 //     * @return Product[] Returns an array of Product objects

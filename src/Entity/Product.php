@@ -117,6 +117,11 @@ class Product
     #[ORM\OneToMany(mappedBy: 'product', targetEntity: Picture::class)]
     private Collection $picture;
 
+    #[ORM\ManyToMany(targetEntity: User::class, mappedBy: 'Favorite')]
+    private Collection $users;
+
+    #[ORM\Column(length: 255)]
+    private ?string $slug = null;
 
     public function __construct()
     {
@@ -124,6 +129,7 @@ class Product
         $this->review = new ArrayCollection();
         $this->quantityInBaskets = new ArrayCollection();
         $this->picture = new ArrayCollection();
+        $this->users = new ArrayCollection();
        
     }
 
@@ -322,5 +328,43 @@ class Product
         return $this;
     }
 
+    /**
+     * @return Collection<int, User>
+     */
+    public function getUsers(): Collection
+    {
+        return $this->users;
+    }
+
+    public function addUser(User $user): self
+    {
+        if (!$this->users->contains($user)) {
+            $this->users[] = $user;
+            $user->addFavorite($this);
+        }
+
+        return $this;
+    }
+
+    public function removeUser(User $user): self
+    {
+        if ($this->users->removeElement($user)) {
+            $user->removeFavorite($this);
+        }
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
+
+        return $this;
+    }
   
 }

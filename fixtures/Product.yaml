@@ -9,4 +9,5 @@ App\Entity\Product:
     species: '@species*'
     category: '@Category0*'
     picture: '<numberBetween(2, 3)>x @picture*'
+    slug (unique) : '<firstName()>'
     

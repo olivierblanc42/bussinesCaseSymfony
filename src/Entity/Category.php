@@ -18,6 +18,7 @@ use Doctrine\ORM\Mapping as ORM;
 )]
 class Category
 {
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column()]
@@ -41,6 +42,9 @@ class Category
 
     #[ORM\OneToMany(mappedBy: 'parent', targetEntity: self::class)]
     private Collection $children;
+
+    #[ORM\Column(length: 255)]
+    private ?string $slug = null;
 
 
 
@@ -136,6 +140,18 @@ class Category
                 $child->setParent(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getSlug(): ?string
+    {
+        return $this->slug;
+    }
+
+    public function setSlug(string $slug): self
+    {
+        $this->slug = $slug;
 
         return $this;
     }

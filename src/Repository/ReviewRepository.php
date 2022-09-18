@@ -47,14 +47,15 @@ class ReviewRepository extends AbstractBusinessCaseRepository
             ;
     }
 
-    public  function getQueryBuilderByProduct($id){
+    public  function getQueryBuilderByProduct($slug){
         return $this->createQueryBuilder('review')
             ->join('review.product','product')
-            ->where('product.id = :id')
-            ->setParameter('id',$id)
+            ->where('product.slug = :slug')
+            ->setParameter('slug',$slug)
             ->orderBy('review.created_at','DESC');
 
     }
+
 
 
 //    /**

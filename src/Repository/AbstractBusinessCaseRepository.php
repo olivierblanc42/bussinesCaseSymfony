@@ -19,4 +19,6 @@ abstract class AbstractBusinessCaseRepository extends ServiceEntityRepository
         return $this->createQueryBuilder(strtolower($entityName));
     }
 
+
+
 }

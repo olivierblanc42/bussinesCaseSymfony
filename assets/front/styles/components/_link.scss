@@ -17,6 +17,10 @@
 
 .delivery {
 
+  > p {
+    margin-bottom: 0;
+  }
+
   a {
     display: inline-block;
     width: 50px;

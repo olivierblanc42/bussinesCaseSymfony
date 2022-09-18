@@ -1,14 +1,14 @@
 
 <div class="cardProd" >
 
-    <a class="container-image text-center" href="{{ path('app_detail_product', {'id': product.id}) }}"> <img  src="{{ product[0].picture[0].path }}"  alt="" class="mx-auto" ></a>
+    <a class="container-image text-center" href="{{ path('app_detail_product', {'slug': product[0].slug}) }}"> <img  src="{{ product[0].picture[0].path }}"  alt="" class="mx-auto" ></a>
 
     <div class="card-body" >
 
         <div class="container">
             <h4>{{ product[0].label }}</h4>
             <p>
-{#               Note moyenne {{ product['note']|number_format(1, ',', ',')}}#}
+               Note moyenne {{ product['note']|number_format(1, ',', ',')}}
 
                 <sup class="display-green">{{ product['Numbnote'] }}</sup> </p>
             <div class=" d-flex flex-wrap justify-content-between product-utils ">

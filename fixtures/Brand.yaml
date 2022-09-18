@@ -1,14 +1,20 @@
 App\Entity\Brand:
   Brand01:
     label: 'royal canin'
+    slug: 'royal canin'
   Brand02:
     label: 'PURINA'
+    slug: 'PURINA'
   Brand03:
     label: 'Eukanuba'
+    slug: 'Eukanuba'
   Brand04:
     label: 'Prestano'
+    slug: 'Prestano'
   Brand05:
     label: 'Acana'
+    slug: 'Acana'
   Brand06:
     label: 'Orijen '
+    slug:  'Orijen '
 

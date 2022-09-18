@@ -50,28 +50,28 @@ class HomeController extends AbstractController
         ]);
     }
 
-//    #[Route('/space', name: 'app_home')]
-//    public function space(): Response
-//    {
-//
-//
-//
-//        return $this->render('Front/home/space.html.twig', [
-//            'controller_name' => 'HomeController',
-//
-//        ]);
-//    }
-//
-//    #[Route('/contact', name: 'app_home')]
-//    public function contact(): Response
-//    {
-//
-//
-//
-//        return $this->render('/Front/home/contactForm.html.twig', [
-//            'controller_name' => 'HomeController',
-//
-//        ]);
-//    }
+    #[Route('/space', name: 'app_space')]
+    public function space(): Response
+    {
+
+
+
+        return $this->render('Front/home/space.html.twig', [
+            'controller_name' => 'HomeController',
+
+        ]);
+    }
+
+    #[Route('/contact', name: 'app_contact')]
+    public function contact(): Response
+    {
+
+
+
+        return $this->render('/Front/home/contactForm.html.twig', [
+            'controller_name' => 'HomeController',
+
+        ]);
+    }
 
 }

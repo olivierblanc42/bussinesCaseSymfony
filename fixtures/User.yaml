@@ -13,6 +13,8 @@ App\Entity\User:
     address: '@address*'
     userPicture: '@UserPicture*'
     username (unique): '<userName()>'
+    slug (unique): '<firstName()>'
+
 
   user_stats (extends user):
     email: 'stats@gmail.com'

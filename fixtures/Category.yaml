@@ -1,15 +1,22 @@
 App\Entity\Category:
-  Category01:
+
+
+  Category01 :
     label: 'Medical'
+    slug: 'Medical'
   Category02:
-    label: 'jouet'
+    label: 'Jouet'
+    slug: 'Jouet'
   Category03:
-    label: 'nourriture'
+    label: 'Nourriture'
+    slug: 'Nourriture'
   Category04:
-    label: 'hygiène'
-  Category{1..100}: 
+    label: 'Hygiène'
+    slug: 'Hygiène'
+  Category{1..100}:
     label: '<firstName()>'
     parent: '@Category0*'
+    slug (unique): '<firstName()>'
     
 
 
