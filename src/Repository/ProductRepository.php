@@ -81,11 +81,10 @@ class ProductRepository extends AbstractBusinessCaseRepository
     public function findBySlugRelations($slug)
     {
         return $this->createQueryBuilder('product')
-            ->select('brand','productReview','picture','COUNT(productReview.note) AS Numbnote','AVG(productReview.note) AS note')
+            ->select('product', 'brand','picture','COUNT(productReview.note) AS Numbnote','AVG(productReview.note) AS note')
             ->join('product.review','productReview')
             ->join('product.picture','picture')
             ->join('product.brand','brand')
-            ->groupBy('product')
             ->where('product.slug = :slug')
             ->setParameter('slug', $slug)
             ->getQuery()

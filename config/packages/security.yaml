@@ -18,14 +18,6 @@ security:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
-        main:
-            lazy: true
-            provider: app_user_provider
-            logout:
-                path: app_logout
-            custom_authenticator: App\Security\UserAuthenticator
-            # where to redirect after logout
-            # target: app_any_route
         api:
             stateless: true
             provider: app_user_provider
@@ -36,6 +28,15 @@ security:
                 success_handler: lexik_jwt_authentication.handler.authentication_success
                 failure_handler: lexik_jwt_authentication.handler.authentication_failure
             jwt: ~
+        main:
+            lazy: true
+            provider: app_user_provider
+            logout:
+                path: app_logout
+            custom_authenticator: App\Security\UserAuthenticator
+            # where to redirect after logout
+            # target: app_any_route
+
 
 
 
@@ -49,7 +50,7 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         - { path: ^/api/docs, roles: PUBLIC_ACCESS } # Allows accessing the Swagger UI
-        - { path: ^/authentication_token, roles: PUBLIC_ACCESS }
+        - { path: ^/api/authentication_token, roles: PUBLIC_ACCESS }
         - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
 #        - { path: ^/api, roles: IS_AUTHENTICATED_FULLY }
 

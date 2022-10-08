@@ -7,8 +7,19 @@
   padding: 10px;
   border-radius: 0.25rem;
   height: 450px;
+  margin-bottom: 1rem;
 
 
+  // note container //
+  .contain-note{
+          position: relative;
+   .numberNote{
+     position: absolute;
+     right: 25%;
+     padding: 0.2rem 0.6rem;
+   }
+
+  }
 
   h4 {
     color: $bg-green;

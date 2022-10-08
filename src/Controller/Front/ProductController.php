@@ -69,7 +69,7 @@ class ProductController extends AbstractController
      * @throws NonUniqueResultException
      */
     #[Route('/{slug}', name: 'app_detail_product')]
-    public function detail(
+    public function show(
         Request $request,
         PaginatorInterface $paginator,
         $slug,
@@ -86,7 +86,7 @@ class ProductController extends AbstractController
 
 
         return $this->render('front/product/detail.html.twig', [
-            'product'=> $this->productRepository->findBySlugRelations($slug),
+            'products'=> $this->productRepository->findBySlugRelations($slug),
             'reviews'=>$reviews,
 
         ]);

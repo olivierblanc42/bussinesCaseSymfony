@@ -1,87 +1,76 @@
-.btn {
+.btn-yellow {
+  background-color: $bg-yellow;
+  color: black;
+  --bs-btn-font-weight: 300;
+  --bs-btn-color: var(--bs-white);
+  --bs-btn-bg: var(--bd-violet);
+  --bs-btn-border-color: var(--bd-violet);
+  --bs-btn-hover-color: var(--bs-white);
+  --bs-btn-hover-bg: #{shade-color($bg-yellow, 10%)};
+  --bs-btn-hover-border-color: #{shade-color($bg-yellow, 10%)};
+  --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+  --bs-btn-active-bg: #{shade-color($bg-yellow, 20%)};
+  --bs-btn-active-border-color: #{shade-color($bg-yellow, 20%)};
+  border-radius: 10px;
+  @media screen and (min-width: 1024px) {
+
+
+    --bs-btn-font-weight: 600;
+    border-radius: 10px;
+
+  }
 
 }
-
-
-
-
-@media screen and (min-width: 1024px) {
-    .btn {
-
-      p{
-        margin: 0px;
-      }
-
-    }
-
-    .btn-yellow {
-      background-color: $bg-yellow;
-      color: black;
-      --bs-btn-font-weight: 600;
-      --bs-btn-color: var(--bs-white);
-      --bs-btn-bg: var(--bd-violet);
-      --bs-btn-border-color: var(--bd-violet);
-      --bs-btn-hover-color: var(--bs-white);
-      --bs-btn-hover-bg: #{shade-color($bg-yellow, 10%)};
-      --bs-btn-hover-border-color: #{shade-color($bg-yellow, 10%)};
-      --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
-      --bs-btn-active-bg: #{shade-color($bg-yellow, 20%)};
-      --bs-btn-active-border-color: #{shade-color($bg-yellow, 20%)};
-      border-radius: 10px;
-
-
-    }
-}
-
 
 
 .btn-banner {
-    display: flex;
-    flex-direction: row;
-    width: fit-content;
-    background-color: $bg-yellow;
-    margin: 0%;
-    text-align: center;
-    padding: $padding-s;
-    font-size: 9px;
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  background-color: $bg-yellow;
+  margin: 0%;
+  text-align: center;
+  padding: $padding-s;
+  font-size: 9px;
 
-    p {
-        margin-bottom: 0;
+  p {
+    margin-bottom: 0;
 
 
-    }
-    @media (min-width: 1024px){
-        font-size: 16px; 
-    }
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 16px;
+  }
 }
 
 
 .btn-footer {
-        outline: none;
-        text-decoration: none;
-        display: inline-block;
-        text-align: center;
-        line-height: 3;
-        color: white;
-        border: 1px solid white;
-        border-radius: 10px;
-        padding: 2px 4px;
-        text-transform: uppercase;
+  outline: none;
+  text-decoration: none;
+  display: inline-block;
+  text-align: center;
+  line-height: 3;
+  color: white;
+  border: 1px solid white;
+  border-radius: 10px;
+  padding: 2px 4px;
+  text-transform: uppercase;
 }
 
 
-.btn-card{
-    display: flex;
-    flex-direction: row;
-    width: fit-content;
-    background-color: $bg-yellow;
-    margin: 0%;
-    text-align: center;
-    font-family: $font-banner;
-    padding: $padding-l;
-    font-size: 18px;
+.btn-card {
+  display: flex;
+  flex-direction: row;
+  width: fit-content;
+  background-color: $bg-yellow;
+  margin: 0%;
+  text-align: center;
+  font-family: $font-banner;
+  padding: $padding-l;
+  font-size: 18px;
 }
 
-.btn-card{
+.btn-card {
 
 }

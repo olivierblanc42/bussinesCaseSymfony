@@ -67,116 +67,141 @@
 //}
 
 
-.nav-1{
+.nav-1 {
+  background-color: $bg-green;
+  height: 89px;
+
+  .menu-portable {
+    display: block;
+    width: 33px;
+    height: 30px;
+    background-image: url("../../../img/svg/autre/menu.svg");
+    background-size: contain;
+    background-repeat: no-repeat;
+  }
+
+.user{
+  display: block;
+}
+  .btn-yellow {
+    display: none;
+  }
+
+  @media screen and (min-width: 1024px) {
     background-color: #F8F8FF !important;
-  height: 100px;
+    height: 100px;
+    .menu-portable {
+      display: none;
+
+    }
+    .btn-yellow {
+      display: block;
+    }
+    .basket {
+      display: none;
+    }
+    .user{
+      display: none;
+    }
+  }
+
 
 }
 
 
-
-
-
-
-
 //**Second Nav**//
 .nav-2 {
-display: none;
+  display: none;
 
-    @media screen and (min-width: 1024px) {
-        height: 48px;
-   .collapse{
-       z-index: 7;
-   }
+  @media screen and (min-width: 1024px) {
+    height: 48px;
+    .collapse {
+      z-index: 7;
+    }
     .nav-menu {
 
-        .menu {
-            display: inline-block;
-            background-image: url("../../../img/svg/autre/menu.svg");
-            background-repeat: no-repeat;
-            background-size: contain;
-            height: 24px;
-            width: 24px;
-            font-size: 13px;
-        }
+      .menu {
+        display: inline-block;
+        background-image: url("../../../img/svg/autre/menu.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+        height: 24px;
+        width: 24px;
+        font-size: 13px;
+      }
 
     }
 
 
-
-
-
-
-
     .nav-icon {
 
-        a {
-            display: inline-block;
-            width: 24px;
-            height: 24px;
-        }
+      a {
+        display: inline-block;
+        width: 24px;
+        height: 24px;
+      }
 
 
-        .cats {
-            background-image: url("../../../img/svg/bar_de_nav/cat.svg");
-            background-repeat: no-repeat;
-            background-size: contain;
+      .cats {
+        background-image: url("../../../img/svg/bar_de_nav/cat.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
 
-        }
+      }
 
-        .dogs {
-            background-image: url("../../../img/svg/bar_de_nav/dog.svg");
-            background-repeat: no-repeat;
-            background-size: contain;
+      .dogs {
+        background-image: url("../../../img/svg/bar_de_nav/dog.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
 
-        }
+      }
 
-        .rodents {
-            background-image: url("../../../img/svg/bar_de_nav/rabbit.svg");
-            background-repeat: no-repeat;
-            background-size: contain;
+      .rodents {
+        background-image: url("../../../img/svg/bar_de_nav/rabbit.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
 
-        }
+      }
 
-        .fishs {
-            background-image: url("../../../img/svg/bar_de_nav/fish.svg");
-            background-repeat: no-repeat;
-            background-size: contain;
+      .fishs {
+        background-image: url("../../../img/svg/bar_de_nav/fish.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
 
-        }
+      }
 
-        .nav-space {
-            
-            background-image: url("../../../img/svg/autre/rocket-launch.svg");
-            background-repeat: no-repeat;
-            background-size: contain; 
-        }
+      .nav-space {
+
+        background-image: url("../../../img/svg/autre/rocket-launch.svg");
+        background-repeat: no-repeat;
+        background-size: contain;
+      }
     }
 
 
     .nav-utils {
 
-        .favorite {
-            display: inline-block;
-            background-image: url("../../../img/svg/bar_de_nav/favoris.svg");
-            background-repeat: no-repeat;
-            background-size: contain;
-            height: 24px;
-            width: 24px;
-
-        }
-    }
-
-    .basket{
+      .favorite {
         display: inline-block;
-        background-image: url("../../../img/svg/autre/backet.svg");
+        background-image: url("../../../img/svg/bar_de_nav/favoris.svg");
         background-repeat: no-repeat;
         background-size: contain;
         height: 24px;
         width: 24px;
-    }
- 
 
+      }
     }
+
+    .basket {
+      display: inline-block;
+      background-image: url("../../../img/svg/autre/backet.svg");
+      background-repeat: no-repeat;
+      background-size: contain;
+      height: 24px;
+      width: 24px;
+    }
+
+
+  }
 
 }

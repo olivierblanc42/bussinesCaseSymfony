@@ -36,15 +36,16 @@
 }
 
 
-//Size banner
+/******** Size special **********/
 .display-1 {
-    font-size: 12px;
+    font-size: 0.7125rem;
     font-family: $font-banner;
     font-weight: bold;
     text-transform: uppercase;
+    margin-bottom: 0.5rem;
 
     @media (min-width: 1024px) {
-        font-size: 24px;
+        font-size: 1.5625rem;
         font-family: $font-banner;
         font-weight: bold;
         text-transform: uppercase;
@@ -52,13 +53,14 @@
 }
 
 .display-2 {
-    font-size: 14px;
+    font-size: 1rem;
     font-family: $font-banner;
     font-weight: bold;
     text-transform: uppercase;
+    margin-bottom: 0.5rem;
 
     @media (min-width: 1024px) {
-        font-size: 28px;
+        font-size: 2.5rem;
         font-family: $font-banner;
         font-weight: bold;
         text-transform: uppercase;
@@ -67,12 +69,13 @@
 
 
 .display-3 {
-    font-size: 12px;
+    font-size: 0.7125rem;
     font-family: $font-banner;
     font-style: italic;
+    margin-bottom: 0.5rem;
 
     @media (min-width: 1024px) {
-        font-size: 24px;
+        font-size: 1.5625rem;
         font-family: $font-banner;
         font-weight: bold;
         text-transform: uppercase;
@@ -102,5 +105,17 @@ h2 {
 
 }
 
+h3{
+    font-size: 1rem;
+    @media (min-width: 1024px) {
+        font-size: 1.75rem;
+    }
+}
+
 /*Font size*/
+
+/*Content Main */
+p{
+    font-size: 1.20rem;
+}
 

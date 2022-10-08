@@ -1,17 +1,26 @@
 
+
+
+
 .card-info{
   background-color: white;
   border-radius: 0.25rem;
   margin-bottom: 1rem;
+
   >h4{
     color: $bg-green;
     text-align: center;
   }
   >p{
     text-align: center;
+
   }
   @media (min-width: 1024px) {
 
+    >p{
+      text-align: center;
+      font-size: 1rem;
+    }
   }
 
 }
